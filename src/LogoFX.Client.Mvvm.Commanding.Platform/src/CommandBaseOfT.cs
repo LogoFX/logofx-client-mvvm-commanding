@@ -263,14 +263,23 @@ namespace LogoFX.Client.Mvvm.Commanding
         protected void CheckParameterType(object parameter)
         {
             if (parameter == null) return;
-#if WINDOWS_UWP || NETFX_CORE
+#if NETFX_CORE
             if (typeof(T).GetTypeInfo().IsValueType) return;
 #endif
 #if NET45
             if (typeof(T).IsValueType) return;
 #endif
-            Guard.ArgumentValue((!typeof(T).IsAssignableFrom(parameter.GetType())), "parameter", ERROR_EXPECTED_TYPE,
-                this.GetType().FullName, typeof(T).FullName);
+            Guard.ArgumentValue((!typeof(T)
+#if NETFX_CORE
+                .GetTypeInfo()
+#endif
+                .IsAssignableFrom(
+                parameter.GetType()
+#if NETFX_CORE
+                .GetTypeInfo()
+#endif
+                )), "parameter", ERROR_EXPECTED_TYPE,
+                GetType().FullName, typeof(T).FullName);
         }
 
 #endregion

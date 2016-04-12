@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
-    "LogoFX.Client.Core": "1.0.7",
-    "LogoFX.Client.Mvvm.Core": "1.0.5",
+    "LogoFX.Client.Core": "1.0.8",
+    "LogoFX.Client.Mvvm.Core": "1.0.6",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Rx-Linq": "2.2.5"
   },
