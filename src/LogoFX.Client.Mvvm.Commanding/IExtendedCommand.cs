@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace LogoFX.Client.Mvvm.Commanding
 {
     /// <summary>
-    /// Extended command with additional attributes
+    /// Extended command with additional attributes.
     /// </summary>
     public interface IExtendedCommand: ICommand
     {

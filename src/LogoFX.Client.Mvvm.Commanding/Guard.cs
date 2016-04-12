@@ -30,9 +30,7 @@ namespace LogoFX.Client.Mvvm.Commanding
         private const string PARAMETER_NOT_VALID = "The parameter '{0}' value is not valid";
         private const string PARAMETER_NOT_NULLOREMPTY = "The parameter '{0}' cannot be null or empty";
         private const string PARAMETER_MUSTBE_OFTYPE = "The parameter '{0}' must be of type '{1}";
-
-        // ArgumentNotNull
-
+        
         /// <summary>
         /// Asserts the argument is not null.
         /// </summary>
@@ -83,9 +81,8 @@ namespace LogoFX.Client.Mvvm.Commanding
             where T
                 : class
         {
-            ArgumentNotNull<T>(value, parameterName, string.Format(CultureInfo.CurrentCulture, messageFormat, messageArgs));
+            ArgumentNotNull(value, parameterName, string.Format(CultureInfo.CurrentCulture, messageFormat, messageArgs));
         }
-
 
         /// <summary>
         /// Asserts the argument does not have default value.
@@ -131,9 +128,8 @@ namespace LogoFX.Client.Mvvm.Commanding
         [DebuggerStepThrough]
         public static void ArgumentNotDefault<T>(T value, string parameterName, string messageFormat, params object[] messageArgs)
         {
-            ArgumentNotDefault<T>(value, parameterName, string.Format(CultureInfo.CurrentCulture, messageFormat, messageArgs));
+            ArgumentNotDefault(value, parameterName, string.Format(CultureInfo.CurrentCulture, messageFormat, messageArgs));
         }
-
 
         /// <summary>
         /// Asserts the argument is neither null nor empty.
@@ -175,7 +171,6 @@ namespace LogoFX.Client.Mvvm.Commanding
         {
             ArgumentNotNullOrEmpty(value, parameterName, string.Format(CultureInfo.CurrentCulture, messageFormat, messageArgs));
         }
-
 
         /// <summary>
         /// Asserts the argument is neither null nor whitespace.
@@ -262,7 +257,6 @@ namespace LogoFX.Client.Mvvm.Commanding
             ArgumentOutOfRange(outOfRange, parameterName, string.Format(CultureInfo.CurrentCulture, messageFormat, messageArgs));
         }
 
-
         /// <summary>
         /// Asserts the argument is from the given type.
         /// </summary>
@@ -307,7 +301,6 @@ namespace LogoFX.Client.Mvvm.Commanding
         {
             ArgumentIsType(argument, type, parameterName, string.Format(CultureInfo.CurrentCulture, messageFormat, messageArgs));
         }
-
 
         /// <summary>
         /// Throws exception for the given parameter.

@@ -3,7 +3,7 @@
 namespace LogoFX.Client.Mvvm.Commanding
 {
     /// <summary>
-    /// Represents event arguments with passed command parameter
+    /// Represents event arguments with passed command parameter.
     /// </summary>
     /// <seealso cref="System.EventArgs" />
     public class CommandEventArgs

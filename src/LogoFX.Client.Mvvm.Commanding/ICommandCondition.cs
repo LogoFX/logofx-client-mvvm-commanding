@@ -4,10 +4,10 @@ using System.Windows.Input;
 namespace LogoFX.Client.Mvvm.Commanding
 {
     /// <summary>
-    /// Represents command with parameter after it has been setup with execution condition
+    /// Represents command with parameter after it has been setup with execution condition.
     /// </summary>
-    /// <typeparam name="TParameter">Type of command parameter</typeparam>
-    /// <typeparam name="TCommand">Type of command</typeparam>
+    /// <typeparam name="TParameter">Type of command parameter.</typeparam>
+    /// <typeparam name="TCommand">Type of command.</typeparam>
     public interface ICommandCondition<TParameter, out TCommand> where TCommand: ICommand
     {
         /// <summary>
@@ -19,9 +19,9 @@ namespace LogoFX.Client.Mvvm.Commanding
     }
 
     /// <summary>
-    /// Represents command after it has been setup with execution condition
+    /// Represents command after it has been setup with execution condition.
     /// </summary>
-    /// <typeparam name="TCommand">Type of command</typeparam>
+    /// <typeparam name="TCommand">Type of command.</typeparam>
     public interface ICommandCondition<out TCommand> where TCommand: ICommand
     {
         /// <summary>
