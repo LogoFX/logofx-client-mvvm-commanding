@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using System.Globalization;
 
 #if NET45
@@ -9,9 +10,11 @@ using System.Windows.Markup;
 using System.Windows.Interactivity;
 #endif
 
-#if WINDOWS_UWP
+#if NETFX_CORE
+using Caliburn.Micro;
 using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Markup;
 #endif
@@ -23,14 +26,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 #else
     [ContentProperty(Name = "Parameter")]
 #endif
-    public class ExecuteCommandAction
-#if NET45
-        : TriggerAction<UIElement>
-#elif WINDOWS_UWP
-        : DependencyObject, IAction
-#elif WINDOWS_PHONE_APP
-        : BindableTriggerAction<FrameworkElement>
-#endif
+    public class ExecuteCommandAction : TriggerAction<UIElement>
     {
         #region Fields
 
@@ -61,10 +57,8 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         /// <summary>
         /// Gets or sets the command.
         /// </summary>
-#if NET45 || WINDOWS_UWP
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
-#endif
-            public ICommand Command
+        public ICommand Command
         {
             get { return (ICommand) GetValue(CommandProperty); }
             set { SetValue(CommandProperty, value); }
@@ -92,11 +86,10 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         /// </summary>
 #if WINDOWS_PHONE_APP
         [TypeConverter(typeof(nRoute.Components.TypeConverters.ConvertFromStringConverter))]
-#endif
-#if NET45 || WINDOWS_UWP
+#else
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
 #endif
-            public object Parameter
+        public object Parameter
         {
             get { return GetValue(ParameterProperty); }
             set { SetValue(ParameterProperty, value); }
@@ -115,10 +108,8 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         /// <summary>
         /// Gets or sets the trigger parameter converter.
         /// </summary>
-#if NET45 || WINDOWS_UWP
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
-#endif
-            public IValueConverter TriggerParameterConverter
+        public IValueConverter TriggerParameterConverter
         {
             get { return (IValueConverter) GetValue(TriggerParameterConverterProperty); }
             set { SetValue(TriggerParameterConverterProperty, value); }
@@ -152,8 +143,6 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
         #region Public Properties
 
-#if NET45
-
         private bool _manageEnableState = true;
 
         public bool ManageEnableState
@@ -162,14 +151,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             set { _manageEnableState = value; }
         }
 
-#endif
-
-
         #endregion
 
         #region Overrides
-
-#if NET45
 
         protected override void OnAttached()
         {
@@ -183,31 +167,23 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             DisposeEnableState();
         }
 
-#endif
+        protected override void Invoke(object arg)
+        {
+            if (AssociatedObject == null)
+            {
+                return;
+            }
 
 #if NET45
-        protected override void Invoke(object arg)
-#elif WINDOWS_UWP
-        public object Execute(object sender, object arg)
+            var lang = CultureInfo.CurrentCulture;
+#else
+            var lang = CultureInfo.CurrentCulture.Name;
 #endif
-        {
-            if (Command == null)
-            {
-                return
-#if WINDOWS_UWP
-                    false
-#endif
-                    ;
-            }
 
             // if a trigger parameter converter is specified, then we use that to get the command parameter
             // else we use the given parameter - note_ the parameter can be null
             var parameter = TriggerParameterConverter != null
-                ? TriggerParameterConverter.Convert(arg, typeof(object), Parameter, CultureInfo.CurrentCulture
-#if WINDOWS_UWP
-                    .Name
-#endif
-                    )
+                ? TriggerParameterConverter.Convert(arg, typeof(object), AssociatedObject, lang)
                 : Parameter;
 
             if (parameter == null && UseTriggerParameter)
@@ -215,39 +191,15 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
                 parameter = arg;
             }
 
-            if (!Command.CanExecute(parameter))
+            if (Command != null && Command.CanExecute(parameter))
             {
-                return
-#if WINDOWS_UWP
-                    false
-#endif
-                    ;
+                Command.Execute(parameter);
             }
-
-            Command.Execute(parameter);
-#if WINDOWS_UWP
-            return true;
-#endif
         }
 
         #endregion
 
         #region Private Members
-
-#if WINDOWS_UWP
-
-        private void SetupEnableState(ICommand newCommand, ICommand oldCommand)
-        {
-
-        }
-
-        private void UpdateEnabledState()
-        {
-
-        }
-#endif
-
-#if NET45
 
         private void Command_CanExecuteChanged(object sender, EventArgs e)
         {
@@ -276,22 +228,22 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             if (!ManageEnableState || AssociatedObject == null || Command == null) return;
 
             // we get if it is enabled or not
-            var _canExecute = Command.CanExecute(Parameter);
+            var canExecute = Command.CanExecute(Parameter);
 
             // we check if it is a control in SL
 #if (!NET45)
-            if (typeof(Control).IsAssignableFrom(AssociatedObject.GetType()))
+            if (AssociatedObject is Control)
             {
-                var _target = AssociatedObject as Control;
-                _target.IsEnabled = _canExecute;
+                var target = AssociatedObject as Control;
+                target.IsEnabled = canExecute;
             }
             else
             {
-                AssociatedObject.IsHitTestVisible = _canExecute;
-                AssociatedObject.Opacity = _canExecute ? INTERACTIVITY_ENABLED : INTERACTIVITY_DISABLED;
+                AssociatedObject.IsHitTestVisible = canExecute;
+                AssociatedObject.Opacity = canExecute ? INTERACTIVITY_ENABLED : INTERACTIVITY_DISABLED;
             }
 #else
-            AssociatedObject.IsEnabled = _canExecute;
+            AssociatedObject.IsEnabled = canExecute;
 #endif
         }
 
@@ -308,8 +260,6 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
                 Command.CanExecuteChanged -= Command_CanExecuteChanged;
             }
         }
-
-#endif
 
         #endregion
     }
