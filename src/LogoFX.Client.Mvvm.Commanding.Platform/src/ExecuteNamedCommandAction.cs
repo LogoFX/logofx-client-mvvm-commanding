@@ -2,25 +2,25 @@
 using System.Windows.Input;
 using System.Globalization;
 using System.Reflection;
-using System.Windows.Controls;
-using System.Windows.Media;
 using Caliburn.Micro;
 using LogoFX.Client.Core;
 
 #if NET45
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Markup;
 using System.Windows.Interactivity;
+using System.Windows.Markup;
+using System.Windows.Media;
 #endif
 
 #if NETFX_CORE
-using Caliburn.Micro;
 using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Markup;
+using Windows.UI.Xaml.Media;
 #endif
 
 namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
@@ -41,6 +41,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 #if NETFX_CORE
         // ReSharper disable once InconsistentNaming
         private const double INTERACTIVITY_ENABLED = 1d;
+        // ReSharper disable once InconsistentNaming
         private const double INTERACTIVITY_DISABLED = 0.5d;
 #endif
 
@@ -68,7 +69,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
         public bool UseTriggerParameter
         {
-            get { return (bool)GetValue(UseTriggerParameterProperty); }
+            get { return (bool) GetValue(UseTriggerParameterProperty); }
             set { SetValue(UseTriggerParameterProperty, value); }
         }
 
@@ -79,12 +80,12 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
                 typeof(ICommand),
                 typeof(ExecuteNamedCommandAction),
                 new PropertyMetadata(
-                    null, 
+                    null,
                     OnCommandChanged));
 
         private static void OnCommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ExecuteNamedCommandAction executeNamedCommandAction = (ExecuteNamedCommandAction)d;
+            ExecuteNamedCommandAction executeNamedCommandAction = (ExecuteNamedCommandAction) d;
 
             if (e.NewValue != null || string.IsNullOrEmpty(executeNamedCommandAction.CommandName))
             {
@@ -95,7 +96,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
         public ICommand Command
         {
-            get { return (ICommand)GetValue(CommandProperty); }
+            get { return (ICommand) GetValue(CommandProperty); }
             set { SetValue(CommandProperty, value); }
         }
 
@@ -115,7 +116,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         /// <value>The name of the method.</value>
         public string CommandName
         {
-            get { return (string)GetValue(CommandNameProperty); }
+            get { return (string) GetValue(CommandNameProperty); }
             set { SetValue(CommandNameProperty, value); }
         }
 
@@ -124,10 +125,10 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         /// </summary>
         public static readonly DependencyProperty ParameterProperty =
             DependencyProperty.Register(
-            "Parameter",
-            typeof(object),
-            typeof(ExecuteNamedCommandAction),
-            new PropertyMetadata(null));
+                "Parameter",
+                typeof(object),
+                typeof(ExecuteNamedCommandAction),
+                new PropertyMetadata(null));
 
         /// <summary>
         /// Gets the parameters to pass as part of the method invocation.
@@ -148,7 +149,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
         public IValueConverter TriggerParameterConverter
         {
-            get { return (IValueConverter)GetValue(TriggerParameterConverterProperty); }
+            get { return (IValueConverter) GetValue(TriggerParameterConverterProperty); }
             set { SetValue(TriggerParameterConverterProperty, value); }
         }
 
@@ -189,6 +190,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         #region Private Members
 
         private ICommand _internalCommand;
+
         private ICommand InternalCommand
         {
             get { return _internalCommand; }
@@ -237,10 +239,11 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
             // we check if it is a control in SL
 #if NETFX_CORE
-            if (AssociatedObject is Control)
+            var control = AssociatedObject as Control;
+            if (control != null)
             {
-                var _target = AssociatedObject as Control;
-                _target.IsEnabled = canExecute;
+                var target = control;
+                target.IsEnabled = canExecute;
             }
             else
             {
@@ -276,15 +279,19 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
                     commandProperty = currentTarget.GetType().GetProperty(CommandName);
 
                 //is have readable property derived from icommand
-                if (commandProperty == null || !commandProperty.CanRead || !typeof(ICommand).IsAssignableFrom(commandProperty.PropertyType))
+                if (commandProperty == null ||
+                    !commandProperty.CanRead ||
+                    !ExtensionMethods.IsAssignableFrom(typeof(ICommand), commandProperty.PropertyType))
                 {
                     DependencyObject temp;
+#if NET45
                     if (currentElement is ContextMenu)
                     {
                         ContextMenu cm = currentElement as ContextMenu;
                         temp = cm.PlacementTarget;
                     }
                     else
+#endif
                     {
                         temp = VisualTreeHelper.GetParent(currentElement);
                     }
@@ -309,7 +316,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
                 else
                 {
-                    InternalCommand = (ICommand)commandProperty.GetValue(currentTarget, null);
+                    InternalCommand = (ICommand) commandProperty.GetValue(currentTarget, null);
                 }
             }
 
@@ -327,12 +334,12 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             //is have readable property derived from icommand
             if (commandProperty == null ||
                 !commandProperty.CanRead ||
-                !typeof(ICommand).IsAssignableFrom(commandProperty.PropertyType))
+                !ExtensionMethods.IsAssignableFrom(typeof(ICommand), commandProperty.PropertyType))
             {
                 return;
             }
 
-            InternalCommand = (ICommand)commandProperty.GetValue(currentTarget, null);
+            InternalCommand = (ICommand) commandProperty.GetValue(currentTarget, null);
         }
 
         #endregion
@@ -341,7 +348,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
         protected override void OnAttached()
         {
-            if (!Execute.InDesignMode)
+            if (!Caliburn.Micro.Execute.InDesignMode)
             {
                 ElementLoaded(null, null);
                 AssociatedObject.Loaded += ElementLoaded;
@@ -352,7 +359,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
         protected override void OnDetaching()
         {
-            if (!Execute.InDesignMode)
+            if (!Caliburn.Micro.Execute.InDesignMode)
             {
                 Detaching(this, EventArgs.Empty);
                 AssociatedObject.Loaded -= ElementLoaded;

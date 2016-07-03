@@ -32,6 +32,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 #if NETFX_CORE
         // ReSharper disable once InconsistentNaming
         private const double INTERACTIVITY_ENABLED = 1d;
+        // ReSharper disable once InconsistentNaming
         private const double INTERACTIVITY_DISABLED = 0.5d;
 #endif
 
