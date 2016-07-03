@@ -175,7 +175,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 #if NET45
             var lang = CultureInfo.CurrentCulture;
 #else
-            var lang = CultureInfo.CurrentCulture.Name;
+            var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 #endif
 
             // if a trigger parameter converter is specified, then we use that to get the command parameter
