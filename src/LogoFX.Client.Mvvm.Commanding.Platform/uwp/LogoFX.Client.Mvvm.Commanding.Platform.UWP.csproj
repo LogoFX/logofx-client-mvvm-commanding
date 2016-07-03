@@ -129,6 +129,9 @@
     <Compile Include="..\src\ConditionOfT.cs">
       <Link>ConditionOfT.cs</Link>
     </Compile>
+    <Compile Include="..\src\ExecuteCommandAction.cs">
+      <Link>ExecuteCommandAction.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\LogoFX.Client.Mvvm.Commanding.Platform.UWP.rd.xml" />
   </ItemGroup>
