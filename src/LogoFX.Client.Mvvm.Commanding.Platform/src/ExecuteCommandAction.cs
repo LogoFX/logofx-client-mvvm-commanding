@@ -3,7 +3,6 @@ using System.Windows.Input;
 using System.Globalization;
 
 #if NET45
-using System;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
@@ -84,11 +83,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         /// <summary>
         /// Gets or sets the parameter.
         /// </summary>
-#if WINDOWS_PHONE_APP
-        [TypeConverter(typeof(nRoute.Components.TypeConverters.ConvertFromStringConverter))]
-#else
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
-#endif
         public object Parameter
         {
             get { return GetValue(ParameterProperty); }
@@ -232,9 +227,10 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
             // we check if it is a control in SL
 #if (!NET45)
-            if (AssociatedObject is Control)
+            var control = AssociatedObject as Control;
+            if (control != null)
             {
-                var target = AssociatedObject as Control;
+                var target = control;
                 target.IsEnabled = canExecute;
             }
             else
@@ -249,13 +245,12 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
         private void DisposeEnableState()
         {
-            if (!ManageEnableState || AssociatedObject == null || Command == null) return;
+            if (!ManageEnableState || AssociatedObject == null || Command == null)
+            {
+                return;
+            }
 
-#if (SILVERLIGHT)
-            if (AssociatedObject as Control != null)
-#else
             if (AssociatedObject != null)
-#endif
             {
                 Command.CanExecuteChanged -= Command_CanExecuteChanged;
             }
