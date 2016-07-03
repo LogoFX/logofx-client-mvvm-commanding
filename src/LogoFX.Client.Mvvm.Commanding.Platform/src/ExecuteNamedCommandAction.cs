@@ -276,7 +276,13 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
                 currentTarget = currentElement.GetValue(FrameworkElement.DataContextProperty);
 
                 if (currentTarget != null)
+                {
+#if WINDOWS_APP
+                    commandProperty = currentTarget.GetType().GetRuntimeProperty(CommandName);
+#else
                     commandProperty = currentTarget.GetType().GetProperty(CommandName);
+#endif
+                }
 
                 //is have readable property derived from icommand
                 if (commandProperty == null ||
@@ -328,7 +334,11 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
             if (currentTarget != null)
             {
+#if WINDOWS_APP
+                commandProperty = currentTarget.GetType().GetRuntimeProperty(CommandName);
+#else
                 commandProperty = currentTarget.GetType().GetProperty(CommandName, BindingFlags.FlattenHierarchy);
+#endif
             }
 
             //is have readable property derived from icommand
