@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using System.Globalization;
 using System.Reflection;
-using Caliburn.Micro;
 using LogoFX.Client.Core;
 
 #if NET45
@@ -16,11 +15,16 @@ using System.Windows.Media;
 
 #if NETFX_CORE
 using Microsoft.Xaml.Interactivity;
+using Windows.UI.Interactivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Markup;
 using Windows.UI.Xaml.Media;
+#endif
+
+#if WINDOWS_APP
+using LogoFX.Client.Mvvm.Commanding;
 #endif
 
 namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
@@ -73,7 +77,6 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             set { SetValue(UseTriggerParameterProperty, value); }
         }
 
-
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register(
                 "Command",
@@ -93,7 +96,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             }
         }
 
+#if NET45
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
+#endif
         public ICommand Command
         {
             get { return (ICommand) GetValue(CommandProperty); }
@@ -287,7 +292,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
                 //is have readable property derived from icommand
                 if (commandProperty == null ||
                     !commandProperty.CanRead ||
-                    !ExtensionMethods.IsAssignableFrom(typeof(ICommand), commandProperty.PropertyType))
+                    !typeof(ICommand).IsAssignableFrom(commandProperty.PropertyType))
                 {
                     DependencyObject temp;
 #if NET45
@@ -344,7 +349,8 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             //is have readable property derived from icommand
             if (commandProperty == null ||
                 !commandProperty.CanRead ||
-                !ExtensionMethods.IsAssignableFrom(typeof(ICommand), commandProperty.PropertyType))
+                !typeof(ICommand).IsAssignableFrom(commandProperty.PropertyType))
+
             {
                 return;
             }
@@ -358,27 +364,19 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
         protected override void OnAttached()
         {
-            if (!Caliburn.Micro.Execute.InDesignMode)
-            {
-                ElementLoaded(null, null);
-                AssociatedObject.Loaded += ElementLoaded;
-            }
-
+            ElementLoaded(null, null);
+            AssociatedObject.Loaded += ElementLoaded;
             base.OnAttached();
         }
 
         protected override void OnDetaching()
         {
-            if (!Caliburn.Micro.Execute.InDesignMode)
+            Detaching(this, EventArgs.Empty);
+            AssociatedObject.Loaded -= ElementLoaded;
+            if (_internalCommand != null)
             {
-                Detaching(this, EventArgs.Empty);
-                AssociatedObject.Loaded -= ElementLoaded;
-                if (_internalCommand != null)
-                {
-                    _internalCommand.CanExecuteChanged -= CanexecuteChanged;
-                }
+                _internalCommand.CanExecuteChanged -= CanexecuteChanged;
             }
-
             base.OnDetaching();
         }
 

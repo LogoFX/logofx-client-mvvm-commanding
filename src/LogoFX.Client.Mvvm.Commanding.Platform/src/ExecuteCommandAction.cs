@@ -10,12 +10,18 @@ using System.Windows.Interactivity;
 #endif
 
 #if NETFX_CORE
-using Caliburn.Micro;
-using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Markup;
+
+#if WINDOWS_PHONE_APP
+using Caliburn.Micro;
+#else
+using Windows.UI.Interactivity;
+using Microsoft.Xaml.Interactivity;
+#endif
+
 #endif
 
 namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
@@ -25,7 +31,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 #else
     [ContentProperty(Name = "Parameter")]
 #endif
-    public class ExecuteCommandAction : TriggerAction<UIElement>
+    public class ExecuteCommandAction : TriggerAction<FrameworkElement>
     {
         #region Fields
 
@@ -60,7 +66,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         /// <summary>
         /// Gets or sets the command.
         /// </summary>
+#if NET45
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
+#endif
         public ICommand Command
         {
             get { return (ICommand) GetValue(CommandProperty); }
@@ -87,7 +95,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         /// <summary>
         /// Gets or sets the parameter.
         /// </summary>
+#if NET45
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
+#endif
         public object Parameter
         {
             get { return GetValue(ParameterProperty); }
@@ -107,7 +117,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
         /// <summary>
         /// Gets or sets the trigger parameter converter.
         /// </summary>
+#if NET45
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
+#endif
         public IValueConverter TriggerParameterConverter
         {
             get { return (IValueConverter) GetValue(TriggerParameterConverterProperty); }
@@ -138,9 +150,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             set { SetValue(UseTriggerParameterProperty, value); }
         }
 
-        #endregion
+#endregion
 
-        #region Public Properties
+#region Public Properties
 
         private bool _manageEnableState = true;
 
@@ -150,9 +162,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             set { _manageEnableState = value; }
         }
 
-        #endregion
+#endregion
 
-        #region Overrides
+#region Overrides
 
         protected override void OnAttached()
         {
@@ -196,9 +208,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             }
         }
 
-        #endregion
+#endregion
 
-        #region Private Members
+#region Private Members
 
         private void Command_CanExecuteChanged(object sender, EventArgs e)
         {
@@ -265,6 +277,6 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             }
         }
 
-        #endregion
+#endregion
     }
 }
