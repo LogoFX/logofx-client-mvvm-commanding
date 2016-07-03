@@ -29,8 +29,11 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
     {
         #region Fields
 
+#if NETFX_CORE
+        // ReSharper disable once InconsistentNaming
         private const double INTERACTIVITY_ENABLED = 1d;
         private const double INTERACTIVITY_DISABLED = 0.5d;
+#endif
 
         #endregion
 
@@ -210,9 +213,14 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
 
             // we detach or attach
             if (oldCommand != null)
+            {
                 oldCommand.CanExecuteChanged -= Command_CanExecuteChanged;
+            }
+
             if (newCommand != null)
+            {
                 newCommand.CanExecuteChanged += Command_CanExecuteChanged;
+            }
 
             // and update
             UpdateEnabledState();
@@ -226,7 +234,7 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             var canExecute = Command.CanExecute(Parameter);
 
             // we check if it is a control in SL
-#if (!NET45)
+#if NETFX_CORE
             var control = AssociatedObject as Control;
             if (control != null)
             {
