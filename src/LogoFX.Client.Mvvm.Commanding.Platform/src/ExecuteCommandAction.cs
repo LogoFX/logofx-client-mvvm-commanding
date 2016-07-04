@@ -14,17 +14,9 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Markup;
-
-#if WINDOWS_PHONE_APP
-using Caliburn.Micro;
-#else
-using Windows.UI.Interactivity;
-using Microsoft.Xaml.Interactivity;
 #endif
 
-#endif
-
-namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
+namespace LogoFX.Client.Mvvm.Commanding
 {
 #if NET45
     [ContentProperty("Parameter")]
@@ -150,9 +142,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             set { SetValue(UseTriggerParameterProperty, value); }
         }
 
-#endregion
+        #endregion
 
-#region Public Properties
+        #region Public Properties
 
         private bool _manageEnableState = true;
 
@@ -162,9 +154,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             set { _manageEnableState = value; }
         }
 
-#endregion
+        #endregion
 
-#region Overrides
+        #region Overrides
 
         protected override void OnAttached()
         {
@@ -208,9 +200,9 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             }
         }
 
-#endregion
+        #endregion
 
-#region Private Members
+        #region Private Members
 
         private void Command_CanExecuteChanged(object sender, EventArgs e)
         {
@@ -277,6 +269,6 @@ namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
             }
         }
 
-#endregion
+        #endregion
     }
 }

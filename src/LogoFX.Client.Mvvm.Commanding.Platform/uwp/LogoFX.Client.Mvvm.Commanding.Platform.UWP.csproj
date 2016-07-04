@@ -135,6 +135,9 @@
     <Compile Include="..\src\ExecuteNamedCommandAction.cs">
       <Link>ExecuteNamedCommandAction.cs</Link>
     </Compile>
+    <Compile Include="..\src\TriggerAction.cs">
+      <Link>TriggerAction.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\LogoFX.Client.Mvvm.Commanding.Platform.UWP.rd.xml" />
   </ItemGroup>

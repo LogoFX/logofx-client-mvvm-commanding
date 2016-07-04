@@ -15,7 +15,6 @@ using System.Windows.Media;
 
 #if NETFX_CORE
 using Microsoft.Xaml.Interactivity;
-using Windows.UI.Interactivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -27,7 +26,7 @@ using Windows.UI.Xaml.Media;
 using LogoFX.Client.Mvvm.Commanding;
 #endif
 
-namespace LogoFX.Client.Mvvm.View.Interactivity.Actions
+namespace LogoFX.Client.Mvvm.Commanding
 {
     /// <summary>
     /// Provides way to call some named command with notion of visal tree routing

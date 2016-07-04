@@ -4,8 +4,7 @@
     "LogoFX.Client.Core.Core": "1.0.7",
     "LogoFX.Client.Mvvm.Core": "1.0.6",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-    "Rx-Linq": "2.2.5",
-    "Windows.UI.Interactivity": "1.3.0"
+    "Rx-Linq": "2.2.5"
   },
   "frameworks": {
     "uap10.0": {}
