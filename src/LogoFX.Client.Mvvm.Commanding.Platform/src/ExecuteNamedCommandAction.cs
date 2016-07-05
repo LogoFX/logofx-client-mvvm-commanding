@@ -281,7 +281,7 @@ namespace LogoFX.Client.Mvvm.Commanding
 
                 if (currentTarget != null)
                 {
-#if WINDOWS_APP
+#if WINDOWS_APP || WINDOWS_PHONE_APP
                     commandProperty = currentTarget.GetType().GetRuntimeProperty(CommandName);
 #else
                     commandProperty = currentTarget.GetType().GetProperty(CommandName);
@@ -338,7 +338,7 @@ namespace LogoFX.Client.Mvvm.Commanding
 
             if (currentTarget != null)
             {
-#if WINDOWS_APP
+#if WINDOWS_APP || WINDOWS_PHONE_APP
                 commandProperty = currentTarget.GetType().GetRuntimeProperty(CommandName);
 #else
                 commandProperty = currentTarget.GetType().GetProperty(CommandName, BindingFlags.FlattenHierarchy);

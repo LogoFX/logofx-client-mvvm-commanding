@@ -111,6 +111,9 @@
     <Compile Include="..\src\ExecuteCommandAction.cs">
       <Link>ExecuteCommandAction.cs</Link>
     </Compile>
+    <Compile Include="..\src\ExecuteNamedCommandAction.cs">
+      <Link>ExecuteNamedCommandAction.cs</Link>
+    </Compile>
     <Compile Include="..\src\TriggerAction.cs">
       <Link>TriggerAction.cs</Link>
     </Compile>
@@ -119,6 +122,10 @@
   <ItemGroup>
     <Reference Include="LogoFX.Client.Core, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\LogoFX.Client.Core.Core.1.0.7\lib\portable-net45+wpa8+win8+MonoAndroid+MonoTouch\LogoFX.Client.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LogoFX.Client.Core.Platform, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LogoFX.Client.Core.1.0.8\lib\wpa81\LogoFX.Client.Core.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LogoFX.Client.Mvvm.Core.Platform, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
