@@ -14,16 +14,11 @@ using System.Windows.Media;
 #endif
 
 #if NETFX_CORE
-using Microsoft.Xaml.Interactivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Markup;
 using Windows.UI.Xaml.Media;
-#endif
-
-#if WINDOWS_APP
-using LogoFX.Client.Mvvm.Commanding;
 #endif
 
 namespace LogoFX.Client.Mvvm.Commanding
