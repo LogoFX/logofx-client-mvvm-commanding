@@ -18,11 +18,14 @@ using Windows.UI.Xaml.Markup;
 
 namespace LogoFX.Client.Mvvm.Commanding
 {
+    /// <summary>
+    /// Executes the attached command
+    /// </summary>
 #if NET45
     [ContentProperty("Parameter")]
 #else
     [ContentProperty(Name = "Parameter")]
-#endif
+#endif   
     public class ExecuteCommandAction : TriggerAction<FrameworkElement>
     {
         #region Fields
@@ -148,6 +151,12 @@ namespace LogoFX.Client.Mvvm.Commanding
 
         private bool _manageEnableState = true;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the enable state should be managed.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if enable state should be managed; otherwise, <c>false</c>.
+        /// </value>
         public bool ManageEnableState
         {
             get { return _manageEnableState; }
@@ -158,18 +167,28 @@ namespace LogoFX.Client.Mvvm.Commanding
 
         #region Overrides
 
+        /// <summary>
+        /// Called after the action is attached to an AssociatedObject.
+        /// </summary>
         protected override void OnAttached()
         {
             base.OnAttached();
             UpdateEnabledState();
         }
 
+        /// <summary>
+        /// Called when the action is being detached from its AssociatedObject, but before it has actually occurred.
+        /// </summary>
         protected override void OnDetaching()
         {
             base.OnDetaching();
             DisposeEnableState();
         }
 
+        /// <summary>
+        /// Invokes the specified argument.
+        /// </summary>
+        /// <param name="arg">The argument.</param>
         protected override void Invoke(object arg)
         {
             if (AssociatedObject == null)

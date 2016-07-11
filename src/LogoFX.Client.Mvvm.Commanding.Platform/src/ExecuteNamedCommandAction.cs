@@ -58,6 +58,9 @@ namespace LogoFX.Client.Mvvm.Commanding
 
         #region Dependency Properties
 
+        /// <summary>
+        /// The use trigger parameter dependency property.
+        /// </summary>
         public static readonly DependencyProperty UseTriggerParameterProperty =
             DependencyProperty.Register(
                 "UseTriggerParameter",
@@ -65,12 +68,21 @@ namespace LogoFX.Client.Mvvm.Commanding
                 typeof(ExecuteNamedCommandAction),
                 new PropertyMetadata(false));
 
+        /// <summary>
+        /// Gets or sets a value indicating whether to use trigger parameter.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if trigger parameter is used; otherwise, <c>false</c>.
+        /// </value>
         public bool UseTriggerParameter
         {
             get { return (bool) GetValue(UseTriggerParameterProperty); }
             set { SetValue(UseTriggerParameterProperty, value); }
         }
 
+        /// <summary>
+        /// The command dependency property.
+        /// </summary>
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register(
                 "Command",
@@ -90,6 +102,9 @@ namespace LogoFX.Client.Mvvm.Commanding
             }
         }
 
+        /// <summary>
+        /// Gets or sets the attached command.
+        /// </summary>
 #if NET45
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
 #endif
@@ -139,6 +154,9 @@ namespace LogoFX.Client.Mvvm.Commanding
             set { SetValue(ParameterProperty, value); }
         }
 
+        /// <summary>
+        /// The trigger parameter converter dependency property.
+        /// </summary>
         public static readonly DependencyProperty TriggerParameterConverterProperty =
             DependencyProperty.Register(
                 "TriggerParameterConverter",
@@ -146,6 +164,12 @@ namespace LogoFX.Client.Mvvm.Commanding
                 typeof(ExecuteNamedCommandAction),
                 new PropertyMetadata(null));
 
+        /// <summary>
+        /// Gets or sets the trigger parameter converter.
+        /// </summary>
+        /// <value>
+        /// The trigger parameter converter.
+        /// </value>
         public IValueConverter TriggerParameterConverter
         {
             get { return (IValueConverter) GetValue(TriggerParameterConverterProperty); }
@@ -156,6 +180,12 @@ namespace LogoFX.Client.Mvvm.Commanding
 
         #region Public Properties
 
+        /// <summary>
+        /// Gets or sets a value indicating whether enable state is managed.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if enable state is managed; otherwise, <c>false</c>.
+        /// </value>
         public bool ManageEnableState
         {
             get { return _manageEnableState; }
@@ -356,6 +386,9 @@ namespace LogoFX.Client.Mvvm.Commanding
 
         #region Overrides
 
+        /// <summary>
+        /// Called after the action is attached to an AssociatedObject.
+        /// </summary>
         protected override void OnAttached()
         {
             ElementLoaded(null, null);
@@ -363,6 +396,9 @@ namespace LogoFX.Client.Mvvm.Commanding
             base.OnAttached();
         }
 
+        /// <summary>
+        /// Called when the action is being detached from its AssociatedObject, but before it has actually occurred.
+        /// </summary>
         protected override void OnDetaching()
         {
             Detaching(this, EventArgs.Empty);
@@ -374,6 +410,10 @@ namespace LogoFX.Client.Mvvm.Commanding
             base.OnDetaching();
         }
 
+        /// <summary>
+        /// Invokes the specified argument.
+        /// </summary>
+        /// <param name="arg">The argument.</param>
         protected override void Invoke(object arg)
         {
 
