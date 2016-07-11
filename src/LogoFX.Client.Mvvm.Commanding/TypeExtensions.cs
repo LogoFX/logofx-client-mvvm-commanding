@@ -18,7 +18,12 @@ namespace LogoFX.Client.Mvvm.Commanding
         {
             return obj != null && type.GetTypeInfo().IsAssignableFrom(obj.GetType().GetTypeInfo());
         }
-
+        /// <summary>
+        /// Determines whether one type is assignable from another.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="t">The t.</param>
+        /// <returns></returns>
         public static bool IsAssignableFrom(this Type type, Type t)
         {
             return type.GetTypeInfo().IsAssignableFrom(t.GetTypeInfo());
