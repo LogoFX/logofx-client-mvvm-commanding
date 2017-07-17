@@ -147,9 +147,9 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LogoFX.Client.Mvvm.Commanding\portable\LogoFX.Client.Mvvm.Commanding.csproj">
-      <Project>{191305D7-4AD6-41BC-ABA6-B20780401E45}</Project>
-      <Name>LogoFX.Client.Mvvm.Commanding</Name>
+    <ProjectReference Include="..\..\LogoFX.Client.Mvvm.Commanding\netstandard1.3\LogoFX.Client.Mvvm.Commanding.NETStandard13.csproj">
+      <Project>{4f5e8c3b-771d-4894-b955-b148afe07744}</Project>
+      <Name>LogoFX.Client.Mvvm.Commanding.NETStandard13</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
