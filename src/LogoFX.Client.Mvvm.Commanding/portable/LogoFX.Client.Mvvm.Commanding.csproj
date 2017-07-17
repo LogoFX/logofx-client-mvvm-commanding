@@ -26,30 +26,45 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Bin\portable\Release\</OutputPath>
+    <OutputPath>..\..\Bin\portable\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\Bin\portable\Release\LogoFX.Client.Mvvm.Commanding.xml</DocumentationFile>
+    <DocumentationFile>..\..\Bin\portable\Release\LogoFX.Client.Mvvm.Commanding.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LogoFX.Client.Core, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LogoFX.Client.Core.Core.1.1.0\lib\portable-net45+wpa8+win8+MonoAndroid+MonoTouch+uap10.0\LogoFX.Client.Core.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\LogoFX.Client.Core.Core.1.1.0\lib\portable-net45+wpa8+win8+MonoAndroid+MonoTouch+uap10.0\LogoFX.Client.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandEventArgs.cs" />
-    <Compile Include="Guard.cs" />
-    <Compile Include="IActionCommand.cs" />
-    <Compile Include="ICommandCondition.cs" />
-    <Compile Include="IExtendedCommand.cs" />
-    <Compile Include="IReceiveEvent.cs" />
-    <Compile Include="IReverseCommand.cs" />
+    <Compile Include="..\src\CommandEventArgs.cs">
+      <Link>CommandEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Guard.cs">
+      <Link>Guard.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IActionCommand.cs">
+      <Link>IActionCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ICommandCondition.cs">
+      <Link>ICommandCondition.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IExtendedCommand.cs">
+      <Link>IExtendedCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IReceiveEvent.cs">
+      <Link>IReceiveEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IReverseCommand.cs">
+      <Link>IReverseCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\src\TypeExtensions.cs">
+      <Link>TypeExtensions.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -142,15 +142,15 @@
     <EmbeddedResource Include="Properties\LogoFX.Client.Mvvm.Commanding.Platform.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LogoFX.Client.Mvvm.Commanding\LogoFX.Client.Mvvm.Commanding.csproj">
-      <Project>{191305d7-4ad6-41bc-aba6-b20780401e45}</Project>
-      <Name>LogoFX.Client.Mvvm.Commanding</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogoFX.Client.Mvvm.Commanding\portable\LogoFX.Client.Mvvm.Commanding.csproj">
+      <Project>{191305D7-4AD6-41BC-ABA6-B20780401E45}</Project>
+      <Name>LogoFX.Client.Mvvm.Commanding</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
