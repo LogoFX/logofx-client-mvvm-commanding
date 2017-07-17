@@ -3,7 +3,7 @@
     "LogoFX.Client.Core": "1.1.0",
     "LogoFX.Client.Core.Core": "1.1.0",
     "LogoFX.Client.Mvvm.Core": "1.0.6",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
     "Rx-Linq": "2.2.5"
   },
   "frameworks": {
