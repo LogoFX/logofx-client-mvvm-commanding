@@ -106,9 +106,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LogoFX.Client.Mvvm.Commanding\portable\LogoFX.Client.Mvvm.Commanding.csproj">
-      <Project>{191305d7-4ad6-41bc-aba6-b20780401e45}</Project>
-      <Name>LogoFX.Client.Mvvm.Commanding</Name>
+    <ProjectReference Include="..\..\LogoFX.Client.Mvvm.Commanding\net45\LogoFX.Client.Mvvm.Commanding.NET45.csproj">
+      <Project>{3e4ffaca-cf3a-4e64-baa5-584644b07d2d}</Project>
+      <Name>LogoFX.Client.Mvvm.Commanding.NET45</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
