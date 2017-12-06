@@ -1,13 +1,13 @@
 ﻿{
   "dependencies": {
-    "LogoFX.Client.Core": "1.2.0",
-    "LogoFX.Client.Core.Core": "1.2.0",
-    "LogoFX.Client.Mvvm.Core": "1.0.6",
+    "LogoFX.Client.Core": "1.2.1-rc1",
+    "LogoFX.Client.Core.Core": "1.2.1-rc1",
+    "LogoFX.Client.Mvvm.Core": "1.1.1-rc1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.4",
     "Rx-Linq": "2.2.5"
   },
   "frameworks": {
-    "uap10.0": {}
+    "uap10.0.10240": {}
   },
   "runtimes": {
     "win10-arm": {},
