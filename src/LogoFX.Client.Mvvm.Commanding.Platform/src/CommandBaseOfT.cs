@@ -154,7 +154,7 @@ namespace LogoFX.Client.Mvvm.Commanding
             remove { _canExecuteHandler -= value; }
         }
 #endif
-#if NET45
+#if NET
         /// <summary>
         /// Occurs when changes occur that affect whether the command should execute.
         /// </summary>
@@ -235,7 +235,7 @@ namespace LogoFX.Client.Mvvm.Commanding
 #if WINDOWS_UWP || NETFX_CORE
             if (parseAsType.GetTypeInfo().IsEnum)
 #endif
-#if NET45
+#if NET
                 if (parseAsType.IsEnum)
 #endif
             {
@@ -244,7 +244,7 @@ namespace LogoFX.Client.Mvvm.Commanding
 #if WINDOWS_UWP || NETFX_CORE
             if (parseAsType.GetTypeInfo().IsValueType)
 #endif
-#if NET45
+#if NET
             else if (parseAsType.IsValueType)
 #endif
             {
@@ -266,7 +266,7 @@ namespace LogoFX.Client.Mvvm.Commanding
 #if NETFX_CORE
             if (typeof(T).GetTypeInfo().IsValueType) return;
 #endif
-#if NET45
+#if NET
             if (typeof(T).IsValueType) return;
 #endif
             Guard.ArgumentValue((!typeof(T)

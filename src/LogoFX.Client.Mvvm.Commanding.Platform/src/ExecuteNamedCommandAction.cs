@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Reflection;
 using LogoFX.Client.Core;
 
-#if NET45
+#if NET
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,7 +27,7 @@ namespace LogoFX.Client.Mvvm.Commanding
     /// Provides way to call some named command with notion of visal tree routing
     /// Will search for propety of type <see cref="ICommand"/> with name />
     /// </summary>
-#if NET45
+#if NET
     [ContentProperty("Parameter")]
 #else
     [ContentProperty(Name = "Parameter")]
@@ -105,7 +105,7 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// <summary>
         /// Gets or sets the attached command.
         /// </summary>
-#if NET45
+#if NET
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
 #endif
         public ICommand Command
@@ -319,7 +319,7 @@ namespace LogoFX.Client.Mvvm.Commanding
                     !typeof(ICommand).IsAssignableFrom(commandProperty.PropertyType))
                 {
                     DependencyObject temp;
-#if NET45
+#if NET
                     if (currentElement is ContextMenu)
                     {
                         ContextMenu cm = currentElement as ContextMenu;
@@ -427,7 +427,7 @@ namespace LogoFX.Client.Mvvm.Commanding
                 }
             }
 
-#if NET45
+#if NET
             var lang = CultureInfo.CurrentCulture;
 #else
             var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
