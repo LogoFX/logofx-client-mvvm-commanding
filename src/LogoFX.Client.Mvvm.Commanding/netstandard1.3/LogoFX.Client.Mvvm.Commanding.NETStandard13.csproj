@@ -15,14 +15,37 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DefaultCanExecuteManager.cs" />
+    <Compile Remove="DefaultCanExecuteManagerFactory.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\ActionCommand.cs" Link="ActionCommand.cs" />
+    <Compile Include="..\src\ActionCommandExtensions.cs" Link="ActionCommandExtensions.cs" />
+    <Compile Include="..\src\ActionCommandOfT.cs" Link="ActionCommandOfT.cs" />
+    <Compile Include="..\src\CanExecuteManagerFactory.cs" Link="CanExecuteManagerFactory.cs" />
+    <Compile Include="..\src\CanExecuteManagerFactoryContext.cs" Link="CanExecuteManagerFactoryContext.cs" />
+    <Compile Include="..\src\CommandBase.cs" Link="CommandBase.cs" />
+    <Compile Include="..\src\CommandBaseOfT.cs" Link="CommandBaseOfT.cs" />
     <Compile Include="..\src\CommandEventArgs.cs" Link="CommandEventArgs.cs" />
+    <Compile Include="..\src\Condition.cs" Link="Condition.cs" />
+    <Compile Include="..\src\ConditionOfT.cs" Link="ConditionOfT.cs" />
+    <Compile Include="..\src\DefaultCanExecuteManager.cs" Link="DefaultCanExecuteManager.cs" />
+    <Compile Include="..\src\DefaultCanExecuteManagerFactory.cs" Link="DefaultCanExecuteManagerFactory.cs" />
     <Compile Include="..\src\Guard.cs" Link="Guard.cs" />
     <Compile Include="..\src\IActionCommand.cs" Link="IActionCommand.cs" />
+    <Compile Include="..\src\ICanExecuteManager.cs" Link="ICanExecuteManager.cs" />
+    <Compile Include="..\src\ICanExecuteManagerFactory.cs" Link="ICanExecuteManagerFactory.cs" />
     <Compile Include="..\src\ICommandCondition.cs" Link="ICommandCondition.cs" />
     <Compile Include="..\src\IExtendedCommand.cs" Link="IExtendedCommand.cs" />
     <Compile Include="..\src\IReceiveEvent.cs" Link="IReceiveEvent.cs" />
     <Compile Include="..\src\IReverseCommand.cs" Link="IReverseCommand.cs" />
     <Compile Include="..\src\TypeExtensions.cs" Link="TypeExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LogoFX.Client.Core.Core" Version="1.2.1-rc2" />
+    <PackageReference Include="System.Reactive.Linq" Version="3.1.1" />
   </ItemGroup>
 
 </Project>

@@ -105,32 +105,20 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\src\ActionCommand.cs">
-      <Link>ActionCommand.cs</Link>
-    </Compile>
     <Compile Include="..\src\ActionCommandExtensions.cs">
       <Link>ActionCommandExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\src\ActionCommandOfT.cs">
-      <Link>ActionCommandOfT.cs</Link>
-    </Compile>
-    <Compile Include="..\src\CommandBase.cs">
-      <Link>CommandBase.cs</Link>
-    </Compile>
-    <Compile Include="..\src\CommandBaseOfT.cs">
-      <Link>CommandBaseOfT.cs</Link>
-    </Compile>
-    <Compile Include="..\src\Condition.cs">
-      <Link>Condition.cs</Link>
-    </Compile>
-    <Compile Include="..\src\ConditionOfT.cs">
-      <Link>ConditionOfT.cs</Link>
+    <Compile Include="..\src\CanExecuteManager.cs">
+      <Link>CanExecuteManager.cs</Link>
     </Compile>
     <Compile Include="..\src\ExecuteCommandAction.cs">
       <Link>ExecuteCommandAction.cs</Link>
     </Compile>
     <Compile Include="..\src\ExecuteNamedCommandAction.cs">
       <Link>ExecuteNamedCommandAction.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Extensions.cs">
+      <Link>Extensions.cs</Link>
     </Compile>
     <Compile Include="..\src\TriggerAction.cs">
       <Link>TriggerAction.cs</Link>
@@ -154,10 +142,16 @@
       <Version>1.1.1-rc2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.5</Version>
+      <Version>6.0.6</Version>
     </PackageReference>
-    <PackageReference Include="System.Reactive.Linq">
-      <Version>3.1.1</Version>
+    <PackageReference Include="Solid.Bootstrapping">
+      <Version>1.2.1-rc3</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Extensibility">
+      <Version>1.2.1-rc2</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Practices.Middleware">
+      <Version>1.2.1-rc2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
