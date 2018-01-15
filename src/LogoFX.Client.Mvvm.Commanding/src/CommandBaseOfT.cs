@@ -18,9 +18,8 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// The error message for invalid parameter type.
         /// </summary>
         protected const string ERROR_EXPECTED_TYPE = "Expected parameter for command ({0}) must be of {1} type";
-
-        //private EventHandler _canExecuteHandler;
-        private ICanExecuteManager _canExecuteManager;
+   
+        private readonly ICanExecuteManager _canExecuteManager;
         private bool _isActive = true;
 
         private Uri _imageUri;

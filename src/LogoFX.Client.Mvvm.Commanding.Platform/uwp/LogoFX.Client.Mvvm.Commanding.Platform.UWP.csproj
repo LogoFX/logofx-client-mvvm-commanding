@@ -117,6 +117,9 @@
     <Compile Include="..\src\ExecuteNamedCommandAction.cs">
       <Link>ExecuteNamedCommandAction.cs</Link>
     </Compile>
+    <Compile Include="..\src\Extensions.cs">
+      <Link>Extensions.cs</Link>
+    </Compile>
     <Compile Include="..\src\TriggerAction.cs">
       <Link>TriggerAction.cs</Link>
     </Compile>
@@ -140,6 +143,15 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Bootstrapping">
+      <Version>1.2.1-rc3</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Extensibility">
+      <Version>1.2.1-rc2</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Practices.Middleware">
+      <Version>1.2.1-rc2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
