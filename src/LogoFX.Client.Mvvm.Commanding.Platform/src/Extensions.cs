@@ -25,7 +25,7 @@ namespace LogoFX.Client.Mvvm.Commanding
     /// <summary>
     /// This midlleware initializes the <see cref="ICanExecuteManager"/> factory
     /// </summary>
-    /// <typeparam name="TBootstrapper"></typeparam>
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     public class InitializeCanExecuteManagerMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
         where TBootstrapper : class, IHaveRegistrator
     {

@@ -4,6 +4,9 @@ using LogoFX.Client.Mvvm.Core;
 
 namespace LogoFX.Client.Mvvm.Commanding
 {
+    /// <summary>
+    /// The platform-specific <see cref="ActionCommand"/> extensions.
+    /// </summary>
     public static class ActionCommandExtensions
     {
         /// <summary>
