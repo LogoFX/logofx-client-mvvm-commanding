@@ -1,9 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
-#if WINDOWS_UWP || NETFX_CORE
 using System.Reflection;
-#endif
 using System.Windows.Input;
 using LogoFX.Client.Core;
 
@@ -21,7 +19,8 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// </summary>
         protected const string ERROR_EXPECTED_TYPE = "Expected parameter for command ({0}) must be of {1} type";
 
-        private EventHandler _canExecuteHandler;
+        //private EventHandler _canExecuteHandler;
+        private ICanExecuteManager _canExecuteManager;
         private bool _isActive = true;
 
         private Uri _imageUri;
@@ -32,7 +31,10 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandBase{T}"/> class.
         /// </summary>
-        protected CommandBase() { }
+        protected CommandBase()
+        {
+            _canExecuteManager = CanExecuteManagerFactoryContext.Current.CreateCanExecuteManager();
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandBase{T}"/> class.
@@ -73,7 +75,7 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// </summary>
         protected virtual void OnRequeryCanExecute()
         {
-            if (_canExecuteHandler != null) _canExecuteHandler(this, EventArgs.Empty);
+            if (_canExecuteManager.CanExecuteHandler != null) _canExecuteManager.CanExecuteHandler(this, EventArgs.Empty);
         }
 
         #endregion
@@ -147,32 +149,15 @@ namespace LogoFX.Client.Mvvm.Commanding
             CheckParameterType(parameter);
             return CanExecute(ParseParameter(parameter, typeof(T)));
         }
-#if WINDOWS_UWP || NETFX_CORE
-        event EventHandler ICommand.CanExecuteChanged
-        {
-            add { _canExecuteHandler += value; }
-            remove { _canExecuteHandler -= value; }
-        }
-#endif
-#if NET
+
         /// <summary>
         /// Occurs when changes occur that affect whether the command should execute.
         /// </summary>
         event EventHandler ICommand.CanExecuteChanged
         {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-                _canExecuteHandler += value;
-            }
-
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-                _canExecuteHandler -= value;
-            }
+            add => _canExecuteManager.AddHandler(value);
+            remove => _canExecuteManager.RemoveHandler(value);
         }
-#endif
 
         void ICommand.Execute(object parameter)
         {
@@ -232,21 +217,11 @@ namespace LogoFX.Client.Mvvm.Commanding
         protected virtual T ParseParameter(object parameter, Type parseAsType)
         {
             if (parameter == null) return default(T);
-#if WINDOWS_UWP || NETFX_CORE
             if (parseAsType.GetTypeInfo().IsEnum)
-#endif
-#if NET
-                if (parseAsType.IsEnum)
-#endif
             {
                 return (T)Enum.Parse(parseAsType, Convert.ToString(parameter), true);
             }
-#if WINDOWS_UWP || NETFX_CORE
-            if (parseAsType.GetTypeInfo().IsValueType)
-#endif
-#if NET
-            else if (parseAsType.IsValueType)
-#endif
+            else if (parseAsType.GetTypeInfo().IsValueType)
             {
                 return (T)Convert.ChangeType(parameter, parseAsType, null);
             }
@@ -263,22 +238,13 @@ namespace LogoFX.Client.Mvvm.Commanding
         protected void CheckParameterType(object parameter)
         {
             if (parameter == null) return;
-#if NETFX_CORE
             if (typeof(T).GetTypeInfo().IsValueType) return;
-#endif
-#if NET
-            if (typeof(T).IsValueType) return;
-#endif
-            Guard.ArgumentValue((!typeof(T)
-#if NETFX_CORE
-                .GetTypeInfo()
-#endif
-                .IsAssignableFrom(
-                parameter.GetType()
-#if NETFX_CORE
-                .GetTypeInfo()
-#endif
-                )), "parameter", ERROR_EXPECTED_TYPE,
+            Guard.ArgumentValue(!typeof(T)
+                    .GetTypeInfo()
+                    .IsAssignableFrom(
+                        parameter.GetType()
+                            .GetTypeInfo()
+                    ), "parameter", ERROR_EXPECTED_TYPE,
                 GetType().FullName, typeof(T).FullName);
         }
 

@@ -105,26 +105,11 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\src\ActionCommand.cs">
-      <Link>ActionCommand.cs</Link>
-    </Compile>
     <Compile Include="..\src\ActionCommandExtensions.cs">
       <Link>ActionCommandExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\src\ActionCommandOfT.cs">
-      <Link>ActionCommandOfT.cs</Link>
-    </Compile>
-    <Compile Include="..\src\CommandBase.cs">
-      <Link>CommandBase.cs</Link>
-    </Compile>
-    <Compile Include="..\src\CommandBaseOfT.cs">
-      <Link>CommandBaseOfT.cs</Link>
-    </Compile>
-    <Compile Include="..\src\Condition.cs">
-      <Link>Condition.cs</Link>
-    </Compile>
-    <Compile Include="..\src\ConditionOfT.cs">
-      <Link>ConditionOfT.cs</Link>
+    <Compile Include="..\src\CanExecuteManager.cs">
+      <Link>CanExecuteManager.cs</Link>
     </Compile>
     <Compile Include="..\src\ExecuteCommandAction.cs">
       <Link>ExecuteCommandAction.cs</Link>
@@ -155,9 +140,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.5</Version>
-    </PackageReference>
-    <PackageReference Include="System.Reactive.Linq">
-      <Version>3.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
