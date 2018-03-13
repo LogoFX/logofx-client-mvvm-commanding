@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Client.Mvvm.Core.Platform</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Client.Mvvm.Core.NotificationHelperDp">
+            <summary>
+            <see cref="T:System.Windows.DependencyObject"/> based notifier on property change 
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Core.NotificationHelperDp.#ctor(System.Action{System.Object,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Core.NotificationHelperDp"/> class.
+            </summary>
+            <param name="callback">The callback.</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Core.NotificationHelperDp.BindValue">
+            <summary>
+            Gets or sets the bind value.
+            </summary>
+            <value>
+            The bind value.
+            </value>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Core.NotificationHelperDp.BindValueProperty">
+            <summary>
+            The bind value property
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Core.NotificationHelperDp.Detach">
+            <summary>
+            Clears the bound value.
+            </summary>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.Core.BindNotifier">
+            <summary>
+            Notifications observer
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Core.BindNotifier.NotifyOn``1(``0,System.String,System.Action{System.Object,System.Object})">
+            <summary>
+            Subscribes supplied object to property changed notifications and invokes the provided callback
+            </summary>
+            <typeparam name="T">Type of subject</typeparam>
+            <param name="vmb">Subject</param>
+            <param name="path">Property path</param>
+            <param name="callback">Notification callback</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Core.BindNotifier.UnNotifyOn``1(``0,System.String)">
+            <summary>
+            Unsubscribes supplied object from property changed notifications
+            </summary>
+            <typeparam name="T">Type of subject</typeparam>
+            <param name="vmb">Subject</param>
+            <param name="path">Property path</param>
+        </member>
+    </members>
+</doc>

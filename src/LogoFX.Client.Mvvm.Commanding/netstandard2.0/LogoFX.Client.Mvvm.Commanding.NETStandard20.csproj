@@ -5,6 +5,8 @@
     <AssemblyName>LogoFX.Client.Mvvm.Commanding</AssemblyName>
     <RootNamespace>LogoFX.Client.Mvvm.Commanding</RootNamespace>
     <Version>1.1.1</Version>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>LogoFX.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -44,8 +46,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LogoFX.Client.Core.Core" Version="1.2.1-rc2" />
     <PackageReference Include="System.Reactive.Linq" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LogoFX.Client.Core">
+      <HintPath>..\..\Lib\LogoFX.Client.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="LogoFX.Core">
+      <HintPath>..\..\Lib\LogoFX.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
