@@ -9,7 +9,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\Bin\netstandard2.0\Release</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard2.0\Release\netstandard2.0\LogoFX.Client.Mvvm.Commanding.xml</DocumentationFile>
+    <DocumentationFile>..\..\Bin\netstandard2.0\Release\LogoFX.Client.Mvvm.Commanding.xml</DocumentationFile>
   </PropertyGroup>
   
   <PropertyGroup>
