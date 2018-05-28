@@ -11,7 +11,7 @@
     <AssemblyName>LogoFX.Client.Mvvm.Commanding.Platform</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -133,25 +133,25 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>1.2.1-rc2</Version>
+      <Version>1.2.1-rc4</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core.Core">
-      <Version>1.2.1-rc2</Version>
+      <Version>1.2.1-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Mvvm.Core">
       <Version>1.1.1-rc2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.6</Version>
+      <Version>6.1.4</Version>
     </PackageReference>
     <PackageReference Include="Solid.Bootstrapping">
-      <Version>1.2.1-rc3</Version>
+      <Version>1.2.1-rc4</Version>
     </PackageReference>
     <PackageReference Include="Solid.Extensibility">
-      <Version>1.2.1-rc2</Version>
+      <Version>1.2.1-rc3</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Middleware">
-      <Version>1.2.1-rc2</Version>
+      <Version>1.2.1-rc3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
