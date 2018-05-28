@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace LogoFX.Client.Mvvm.Commanding
 {
-    class CanExecuteManager : ICanExecuteManager
+    public class CanExecuteManager : ICanExecuteManager
     {
         public EventHandler CanExecuteHandler { get; private set; }
 
