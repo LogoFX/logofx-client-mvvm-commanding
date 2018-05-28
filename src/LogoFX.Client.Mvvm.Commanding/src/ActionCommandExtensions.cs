@@ -27,9 +27,9 @@ namespace LogoFX.Client.Mvvm.Commanding
             Guard.ArgumentNotDefault(command, "command");
             Guard.ArgumentNotDefault(notifiable, "notifiable");
 
-            Observable
-                .FromEventPattern<PropertyChangedEventHandler,PropertyChangedEventArgs>((a)=>notifiable.PropertyChanged+=a, (a)=>notifiable.PropertyChanged-=a)
-                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs));
+            command.AddDisposable(Observable
+                .FromEventPattern<PropertyChangedEventHandler,PropertyChangedEventArgs>(a=>notifiable.PropertyChanged+=a, a=>notifiable.PropertyChanged-=a)
+                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs)));
             return command;
         }        
 
@@ -50,10 +50,10 @@ namespace LogoFX.Client.Mvvm.Commanding
             Guard.ArgumentNotNull(notifiable, "notifiable");
             Guard.ArgumentNotNull(propertySelector, "propertySelector");
 
-            Observable
-                .FromEventPattern<PropertyChangedEventHandler, PropertyChangedEventArgs>((a) => notifiable.PropertyChanged += a, (a) => notifiable.PropertyChanged -= a)
+            command.AddDisposable(Observable
+                .FromEventPattern<PropertyChangedEventHandler, PropertyChangedEventArgs>(a => notifiable.PropertyChanged += a, a => notifiable.PropertyChanged -= a)
                 .Where(a=>a.EventArgs.PropertyName == propertySelector.GetPropertyName())
-                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs));
+                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs)));
 
             return command;
         }
@@ -72,9 +72,9 @@ namespace LogoFX.Client.Mvvm.Commanding
             Guard.ArgumentNotDefault(command, "command");
             Guard.ArgumentNotNull(relatedCommand, "relatedCommand");
 
-            Observable
-                .FromEventPattern<EventHandler, EventArgs>((a) => relatedCommand.CanExecuteChanged += a, (a) => relatedCommand.CanExecuteChanged -= a)
-                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs));
+            command.AddDisposable(Observable
+                .FromEventPattern<EventHandler, EventArgs>(a => relatedCommand.CanExecuteChanged += a, a => relatedCommand.CanExecuteChanged -= a)
+                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs)));
 
             return command;
         }
@@ -93,9 +93,9 @@ namespace LogoFX.Client.Mvvm.Commanding
             Guard.ArgumentNotDefault(command, "command");
             Guard.ArgumentNotNull(relatedCommand, "relatedCommand");
 
-            Observable
-                .FromEventPattern<EventHandler<CommandEventArgs>,CommandEventArgs>((a) => relatedCommand.CommandExecuted += a, (a) => relatedCommand.CommandExecuted -= a)
-                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs));
+            command.AddDisposable(Observable
+                .FromEventPattern<EventHandler<CommandEventArgs>,CommandEventArgs>(a => relatedCommand.CommandExecuted += a, a => relatedCommand.CommandExecuted -= a)
+                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs)));
 
             return command;
         }
@@ -112,9 +112,9 @@ namespace LogoFX.Client.Mvvm.Commanding
         {
             Guard.ArgumentNotDefault(command, "command");
 
-            Observable
-                .FromEventPattern<EventHandler<CommandEventArgs>, CommandEventArgs>((a) => command.CommandExecuted += a, (a) => command.CommandExecuted -= a)
-                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs));
+            command.AddDisposable(Observable
+                .FromEventPattern<EventHandler<CommandEventArgs>, CommandEventArgs>(a => command.CommandExecuted += a, a => command.CommandExecuted -= a)
+                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs)));
 
             return command;
         }
@@ -133,9 +133,9 @@ namespace LogoFX.Client.Mvvm.Commanding
             Guard.ArgumentNotDefault(command, "command");
             Guard.ArgumentNotNull(collection, "collection");
 
-            Observable
-                .FromEventPattern<NotifyCollectionChangedEventHandler, NotifyCollectionChangedEventArgs>((a) => collection.CollectionChanged += a, (a) => collection.CollectionChanged -= a)
-                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs));
+            command.AddDisposable(Observable
+                .FromEventPattern<NotifyCollectionChangedEventHandler, NotifyCollectionChangedEventArgs>(a => collection.CollectionChanged += a, a => collection.CollectionChanged -= a)
+                .Subscribe(a => command.ReceiveWeakEvent(a.EventArgs)));
 
             return command;
         }
@@ -192,6 +192,15 @@ namespace LogoFX.Client.Mvvm.Commanding
             command.Description = description;
 
             return command;
-        }        
+        }
+
+        private static void AddDisposable<T>(this T command, IDisposable disposable) where
+            T : ICommand, IReceiveEvent
+        {
+            if (command is IDisposableCollection disposableCollection)
+            {
+                disposableCollection.Add(disposable);
+            }
+        }
     }
 }
