@@ -5,17 +5,21 @@ using System.Windows.Input;
 
 namespace LogoFX.Client.Mvvm.Commanding
 {
+    /// <inheritdoc />
     public class CanExecuteManager : ICanExecuteManager
     {
+        /// <inheritdoc />
         public EventHandler CanExecuteHandler { get; private set; }
 
 #if WINDOWS_UWP || NETFX_CORE
 
+        /// <inheritdoc />
         public void AddHandler(EventHandler eventHandler)
         {            
             CanExecuteHandler += eventHandler;
         }
 
+        /// <inheritdoc />
         public void RemoveHandler(EventHandler eventHandler)
         {            
             CanExecuteHandler -= eventHandler;
@@ -23,12 +27,14 @@ namespace LogoFX.Client.Mvvm.Commanding
 #endif
 
 #if NET
+        /// <inheritdoc />
         public void AddHandler(EventHandler eventHandler)
         {
             CommandManager.RequerySuggested += eventHandler;
             CanExecuteHandler += eventHandler;
         }
 
+        /// <inheritdoc />
         public void RemoveHandler(EventHandler eventHandler)
         {
             CommandManager.RequerySuggested -= eventHandler;
