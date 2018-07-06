@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,7 +11,11 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\Bin\netstandard2.0\Release</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard2.0\Release\netstandard2.0\LogoFX.Client.Mvvm.Commanding.xml</DocumentationFile>
+    <DocumentationFile>..\..\Bin\netstandard2.0\Release\LogoFX.Client.Mvvm.Commanding.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,6 +43,7 @@
     <Compile Include="..\src\ICanExecuteManager.cs" Link="ICanExecuteManager.cs" />
     <Compile Include="..\src\ICanExecuteManagerFactory.cs" Link="ICanExecuteManagerFactory.cs" />
     <Compile Include="..\src\ICommandCondition.cs" Link="ICommandCondition.cs" />
+    <Compile Include="..\src\IDisposableCollection.cs" Link="IDisposableCollection.cs" />
     <Compile Include="..\src\IExtendedCommand.cs" Link="IExtendedCommand.cs" />
     <Compile Include="..\src\IReceiveEvent.cs" Link="IReceiveEvent.cs" />
     <Compile Include="..\src\IReverseCommand.cs" Link="IReverseCommand.cs" />
@@ -46,7 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Reactive.Linq" Version="3.1.1" />
+    <PackageReference Include="System.Reactive.Linq" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>

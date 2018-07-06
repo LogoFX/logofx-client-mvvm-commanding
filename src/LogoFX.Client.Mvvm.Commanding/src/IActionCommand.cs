@@ -7,7 +7,11 @@ namespace LogoFX.Client.Mvvm.Commanding
     /// and is able to receive events on property and collection notifications.
     /// </summary>
     public interface IActionCommand
-         : IReverseCommand, IReceiveEvent, IExtendedCommand, INotifyPropertyChanged
+        : IReverseCommand,
+            IReceiveEvent,
+            IExtendedCommand,
+            INotifyPropertyChanged,
+            IDisposableCollection
     {
         /// <summary>
         /// Gets or sets a value indicating whether this instance is active.

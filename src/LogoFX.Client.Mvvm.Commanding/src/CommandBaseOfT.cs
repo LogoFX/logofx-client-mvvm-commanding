@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -175,6 +176,23 @@ namespace LogoFX.Client.Mvvm.Commanding
         }
 
 #endregion
+
+        private readonly List<IDisposable> _disposables = new List<IDisposable>();
+        IEnumerable<IDisposable> IDisposableCollection.Disposables => _disposables;
+
+        void IDisposableCollection.Add(IDisposable disposable)
+        {
+            _disposables.Add(disposable);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            foreach (var disposable in _disposables)
+            {
+                disposable?.Dispose();
+            }
+        }
 
 #region INotifyPropertyChanged Members
 
