@@ -19,6 +19,7 @@
   <ItemGroup>
     <Compile Remove="CanExecuteManagerFactory.cs" />
     <Compile Remove="CanExecuteManagerFactoryContext.cs" />
+    <Compile Remove="CommandFactory.cs" />
     <Compile Remove="ICanExecuteManager.cs" />
     <Compile Remove="ICanExecuteManagerFactory.cs" />
   </ItemGroup>
@@ -32,6 +33,7 @@
     <Compile Include="..\src\CommandBase.cs" Link="CommandBase.cs" />
     <Compile Include="..\src\CommandBaseOfT.cs" Link="CommandBaseOfT.cs" />
     <Compile Include="..\src\CommandEventArgs.cs" Link="CommandEventArgs.cs" />
+    <Compile Include="..\src\CommandFactory.cs" Link="CommandFactory.cs" />
     <Compile Include="..\src\Condition.cs" Link="Condition.cs" />
     <Compile Include="..\src\ConditionOfT.cs" Link="ConditionOfT.cs" />
     <Compile Include="..\src\DefaultCanExecuteManager.cs" Link="DefaultCanExecuteManager.cs" />
