@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>LogoFX.Client.Mvvm.Commanding</AssemblyName>
+    <RootNamespace>LogoFX.Client.Mvvm.Commanding</RootNamespace>
+    <Version>1.1.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\Bin\netstandard2.0\Release</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\LogoFX.Client.Mvvm.Commanding.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>  
+
+  <ItemGroup>
+    <PackageReference Include="LogoFX.Client.Core.Core" Version="1.2.1-rc3" />
+    <PackageReference Include="System.Reactive.Linq" Version="4.0.0" />
+  </ItemGroup>
+
+</Project>

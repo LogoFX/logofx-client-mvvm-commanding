@@ -155,9 +155,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LogoFX.Client.Mvvm.Commanding\netstandard2.0\LogoFX.Client.Mvvm.Commanding.NETStandard20.csproj">
-      <Project>{623da7d4-f3f5-4a1b-acd7-d7a0be62eae8}</Project>
-      <Name>LogoFX.Client.Mvvm.Commanding.NETStandard20</Name>
+    <ProjectReference Include="..\..\LogoFX.Client.Mvvm.Commanding\LogoFX.Client.Mvvm.Commanding.csproj">
+      <Project>{f17b007f-4af8-42cc-a16f-f2ea2741fe41}</Project>
+      <Name>LogoFX.Client.Mvvm.Commanding</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
