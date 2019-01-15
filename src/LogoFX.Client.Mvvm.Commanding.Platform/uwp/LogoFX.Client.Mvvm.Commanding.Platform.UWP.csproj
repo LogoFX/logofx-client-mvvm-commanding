@@ -11,7 +11,7 @@
     <AssemblyName>LogoFX.Client.Mvvm.Commanding.Platform</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -127,13 +127,8 @@
     <EmbeddedResource Include="Properties\LogoFX.Client.Mvvm.Commanding.Platform.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
-      <Name>Behaviors SDK %28XAML%29</Name>
-    </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.0.0-rc2</Version>
+      <Version>2.0.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core.Core">
       <Version>2.0.0-rc1</Version>
@@ -142,16 +137,19 @@
       <Version>2.0.0-rc1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.2</Version>
+      <Version>6.1.9</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.0</Version>
     </PackageReference>
     <PackageReference Include="Solid.Bootstrapping">
-      <Version>2.0.0-rc2</Version>
+      <Version>2.0.0</Version>
     </PackageReference>
     <PackageReference Include="Solid.Extensibility">
-      <Version>2.0.0-rc2</Version>
+      <Version>2.0.0</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Middleware">
-      <Version>2.0.0-rc1</Version>
+      <Version>2.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
