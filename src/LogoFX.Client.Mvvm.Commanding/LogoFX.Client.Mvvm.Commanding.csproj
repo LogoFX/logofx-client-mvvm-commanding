@@ -17,7 +17,7 @@
   </PropertyGroup>  
 
   <ItemGroup>
-    <PackageReference Include="LogoFX.Client.Core.Core" Version="2.0.0-rc3" />
+    <PackageReference Include="LogoFX.Client.Core.Core" Version="2.0.0" />
     <PackageReference Include="System.Reactive.Linq" Version="4.1.5" />
   </ItemGroup>
 
