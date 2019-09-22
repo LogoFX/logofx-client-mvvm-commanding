@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AssemblyName>LogoFX.Client.Mvvm.Commanding</AssemblyName>
     <RootNamespace>LogoFX.Client.Mvvm.Commanding</RootNamespace>
     <Version>2.0.0</Version>
@@ -11,10 +12,6 @@
     <OutputPath>..\Bin\netstandard2.0\Release</OutputPath>
     <DocumentationFile>..\Bin\netstandard2.0\Release\LogoFX.Client.Mvvm.Commanding.xml</DocumentationFile>
   </PropertyGroup>
-  
-  <PropertyGroup>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-  </PropertyGroup>  
 
   <ItemGroup>
     <PackageReference Include="LogoFX.Client.Core.Core" Version="2.0.0" />
