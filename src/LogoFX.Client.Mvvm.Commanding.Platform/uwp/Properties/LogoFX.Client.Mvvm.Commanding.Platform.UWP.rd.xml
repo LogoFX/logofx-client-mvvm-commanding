@@ -25,7 +25,7 @@
     http://go.microsoft.com/fwlink/?LinkID=391919
 -->
 <Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
-  <Library Name="LogoFX.Client.Mvvm.Commanding.Platform.NET45">
+  <Library Name="LogoFX.Client.Mvvm.Commanding.Platform">
 
   	<!-- add directives for your library here -->
 
