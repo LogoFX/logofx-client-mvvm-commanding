@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Reflection;
 using LogoFX.Client.Core;
 
-#if NET
+#if NET || NETCORE
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,7 +27,7 @@ namespace LogoFX.Client.Mvvm.Commanding
     /// Provides way to call some named command with notion of visal tree routing
     /// Will search for propety of type <see cref="ICommand"/> with name />
     /// </summary>
-#if NET
+#if NET || NETCORE
     [ContentProperty("Parameter")]
 #else
     [ContentProperty(Name = "Parameter")]
@@ -105,7 +105,7 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// <summary>
         /// Gets or sets the attached command.
         /// </summary>
-#if NET
+#if NET || NETCORE
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
 #endif
         public ICommand Command
@@ -319,7 +319,7 @@ namespace LogoFX.Client.Mvvm.Commanding
                     !typeof(ICommand).IsAssignableFrom(commandProperty.PropertyType))
                 {
                     DependencyObject temp;
-#if NET
+#if NET || NETCORE
                     if (currentElement is ContextMenu)
                     {
                         ContextMenu cm = currentElement as ContextMenu;
@@ -427,7 +427,7 @@ namespace LogoFX.Client.Mvvm.Commanding
                 }
             }
 
-#if NET
+#if NET || NETCORE
             var lang = CultureInfo.CurrentCulture;
 #else
             var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
@@ -457,7 +457,7 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// </returns>
         public override string ToString()
         {
-            return "NamedCommndAction: " + CommandName;
+            return $"NamedCommandAction: {CommandName}";
         }
 
         #endregion

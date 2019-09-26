@@ -1,5 +1,5 @@
 ﻿using System;
-#if NET
+#if NET || NETCORE
 using System.Windows.Input;
 #endif
 
@@ -26,7 +26,7 @@ namespace LogoFX.Client.Mvvm.Commanding
         }
 #endif
 
-#if NET
+#if NET || NETCORE
         /// <inheritdoc />
         public void AddHandler(EventHandler eventHandler)
         {
