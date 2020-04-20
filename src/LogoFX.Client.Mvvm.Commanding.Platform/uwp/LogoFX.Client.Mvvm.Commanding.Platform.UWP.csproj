@@ -30,7 +30,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <EmbedSources>true</EmbedSources>
+    <EmbedAllSources>True</EmbedAllSources>
     <DebugType>embedded</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\uwp\Release\</OutputPath>
