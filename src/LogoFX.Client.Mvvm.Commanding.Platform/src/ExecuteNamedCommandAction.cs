@@ -24,8 +24,8 @@ using Windows.UI.Xaml.Media;
 namespace LogoFX.Client.Mvvm.Commanding
 {
     /// <summary>
-    /// Provides way to call some named command with notion of visal tree routing
-    /// Will search for propety of type <see cref="ICommand"/> with name />
+    /// Provides way to call some named command with notion of visual tree routing
+    /// Will search for property of type <see cref="ICommand"/> with name />
     /// </summary>
 #if NET || NETCORE
     [ContentProperty("Parameter")]
