@@ -13,6 +13,8 @@
     <DefineConstants>TRACE;NETCORE</DefineConstants>
     <OutputPath>..\..\Bin\netcore\Release\</OutputPath>
     <DocumentationFile>..\..\Bin\netcore\Release\LogoFX.Client.Mvvm.Commanding.Platform.xml</DocumentationFile>
+    <EmbedSources>true</EmbedSources>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
