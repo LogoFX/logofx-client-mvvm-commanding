@@ -128,10 +128,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.1.0</Version>
+      <Version>2.1.1-rc1</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core.Core">
-      <Version>2.1.0</Version>
+      <Version>2.1.1-rc1</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Mvvm.Core">
       <Version>2.1.0</Version>
