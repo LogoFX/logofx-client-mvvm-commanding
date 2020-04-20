@@ -30,8 +30,9 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <EmbedAllSources>True</EmbedAllSources>
+    <EmbedAllSources>true</EmbedAllSources>
     <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\uwp\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
@@ -135,7 +136,7 @@
       <Version>2.1.1-rc1</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Mvvm.Core">
-      <Version>2.1.0</Version>
+      <Version>2.1.1-rc1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
