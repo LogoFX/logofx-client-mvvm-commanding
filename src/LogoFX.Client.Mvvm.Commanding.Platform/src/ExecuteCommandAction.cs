@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using System.Globalization;
 
-#if NET || NETCORE
+#if NET || NETCORE || NETFRAMEWORK
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
@@ -21,7 +21,7 @@ namespace LogoFX.Client.Mvvm.Commanding
     /// <summary>
     /// Executes the attached command
     /// </summary>
-#if NET || NETCORE
+#if NET || NETCORE || NETFRAMEWORK
     [ContentProperty("Parameter")]
 #else
     [ContentProperty(Name = "Parameter")]
@@ -61,7 +61,7 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// <summary>
         /// Gets or sets the command.
         /// </summary>
-#if NET || NETCORE
+#if NET || NETCORE || NETFRAMEWORK
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
 #endif
         public ICommand Command
@@ -90,7 +90,7 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// <summary>
         /// Gets or sets the parameter.
         /// </summary>
-#if NET || NETCORE
+#if NET || NETCORE || NETFRAMEWORK
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
 #endif
         public object Parameter
@@ -112,7 +112,7 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// <summary>
         /// Gets or sets the trigger parameter converter.
         /// </summary>
-#if NET || NETCORE
+#if NET || NETCORE || NETFRAMEWORK
         [CustomPropertyValueEditor(CustomPropertyValueEditor.PropertyBinding)]
 #endif
         public IValueConverter TriggerParameterConverter
@@ -196,7 +196,7 @@ namespace LogoFX.Client.Mvvm.Commanding
                 return;
             }
 
-#if NET || NETCORE
+#if NET || NETCORE || NETFRAMEWORK
             var lang = CultureInfo.CurrentCulture;
 #else
             var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Client.Mvvm.Commandi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Client.Mvvm.Commanding.Platform.NETFramework", "LogoFX.Client.Mvvm.Commanding.Platform\netframework\LogoFX.Client.Mvvm.Commanding.Platform.NETFramework.csproj", "{C0A7D585-0C3A-4E48-AE42-5B08981EEACA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Client.Mvvm.Commanding.Platform.NET", "LogoFX.Client.Mvvm.Commanding.Platform\net\LogoFX.Client.Mvvm.Commanding.Platform.NET.csproj", "{213238C9-30AC-4F81-8119-924735A855DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,22 @@ Global
 		{C0A7D585-0C3A-4E48-AE42-5B08981EEACA}.Release|x64.Build.0 = Release|Any CPU
 		{C0A7D585-0C3A-4E48-AE42-5B08981EEACA}.Release|x86.ActiveCfg = Release|Any CPU
 		{C0A7D585-0C3A-4E48-AE42-5B08981EEACA}.Release|x86.Build.0 = Release|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Debug|ARM.Build.0 = Debug|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Debug|x64.Build.0 = Debug|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Debug|x86.Build.0 = Debug|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Release|ARM.Build.0 = Release|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Release|x64.ActiveCfg = Release|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Release|x64.Build.0 = Release|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Release|x86.ActiveCfg = Release|Any CPU
+		{213238C9-30AC-4F81-8119-924735A855DE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
