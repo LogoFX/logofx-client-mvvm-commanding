@@ -69,19 +69,19 @@
       <Version>1.0.2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.2.0-rc1</Version>
+      <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Mvvm.Core">
-      <Version>2.2.0-rc1</Version>
+      <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Core">
-      <Version>2.2.0-rc1</Version>
+      <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="Solid.Bootstrapping">
-      <Version>2.2.0</Version>
+      <Version>2.3.0-rc1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Extensibility">
-      <Version>2.2.0</Version>
+      <Version>2.3.0-rc1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
