@@ -3,7 +3,7 @@
 namespace LogoFX.Client.Mvvm.Commanding
 {
     /// <summary>
-    /// Represents a command that supports various requery options 
+    /// Represents a command that supports various re-query options 
     /// and is able to receive events on property and collection notifications.
     /// </summary>
     public interface IActionCommand

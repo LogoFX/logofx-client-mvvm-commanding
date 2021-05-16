@@ -3,7 +3,7 @@
 namespace LogoFX.Client.Mvvm.Commanding
 {
     /// <summary>
-    /// Representa a command factory, ensuring one-time initialization for fields.
+    /// Represents a command factory, ensuring one-time initialization for fields.
     /// </summary>
     public static class CommandFactory
     {
