@@ -15,7 +15,7 @@
     <releaseNotes>Updated dependent packages</releaseNotes>
     <dependencies>
       <dependency id="LogoFX.Client.Core.Core" version="2.2.0-rc3" />
-      <dependency id="System.Reactive.Linq" version="4.1.6" />
+      <dependency id="System.Reactive.Linq" version="5.0.0" />
     </dependencies>
   </metadata>
 </package>
