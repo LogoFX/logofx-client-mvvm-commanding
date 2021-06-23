@@ -24,9 +24,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Expression.Blend.Sdk" Version="1.0.2" />
-    <PackageReference Include="LogoFX.Client.Core" Version="2.2.0-rc2" />
-    <PackageReference Include="LogoFX.Client.Mvvm.Core" Version="2.2.0-rc2" />
-    <PackageReference Include="Solid.Bootstrapping" Version="2.3.0" />
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.0-rc3" />
+    <PackageReference Include="LogoFX.Client.Mvvm.Core" Version="2.2.0-rc3" />
+    <PackageReference Include="Solid.Bootstrapping" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LogoFX.Client.Mvvm.Commanding\LogoFX.Client.Mvvm.Commanding.csproj" />
