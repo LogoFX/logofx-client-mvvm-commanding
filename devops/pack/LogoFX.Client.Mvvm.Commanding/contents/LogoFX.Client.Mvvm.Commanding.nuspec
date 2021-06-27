@@ -12,7 +12,7 @@
     <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
     <description>LogoFX Client Mvvm Commanding containing implementation of ICommand with Fluent API.</description>
     <summary>LogoFX Client Mvvm Commanding containing implementation of ICommand with Fluent API.</summary>
-    <releaseNotes>Updated dependent packages</releaseNotes>
+    <releaseNotes>Added support for .NET Core</releaseNotes>
     <dependencies>
       <group>
         <dependency id="Solid.Practices.Middleware" version="2.3.1" />
@@ -26,5 +26,7 @@
         <dependency id="Microsoft.Xaml.Behaviors.Uwp.Managed" version="2.0.1" />
       </group>
     </dependencies>
+    <tags>framework logofx dotnet</tags>
+    <repository type="Open Source" url="https://github.com/LogoFX/logofx-client-mvvm-commanding" />
   </metadata>
 </package>
