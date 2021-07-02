@@ -39,8 +39,8 @@ namespace LogoFX.Client.Mvvm.Commanding
             NextElement = nextElement;
         }
 
-        public bool CanUseCommand {get;private set;}
-        public ICommand Command {get;private set;}
-        public DependencyObject NextElement {get;private set;}
+        public bool CanUseCommand { get;private set; }
+        public ICommand Command { get;private set; }
+        public DependencyObject NextElement { get;private set; }
     }
 }
