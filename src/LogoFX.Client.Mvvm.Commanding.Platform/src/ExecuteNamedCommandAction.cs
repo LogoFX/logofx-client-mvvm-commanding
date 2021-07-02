@@ -299,6 +299,7 @@ namespace LogoFX.Client.Mvvm.Commanding
             var elementAnalyzer = new ElementAnalyzer(CommandName);
             ElementAnalysisResult analysisResult;
 
+            //TODO: Check the case for GetProperty(CommandName, BindingFlags.FlattenHierarchy) if something fails to work
             while (commandTargetElement != null && InternalCommand == null)
             {
                 analysisResult = elementAnalyzer.Analyze(commandTargetElement);
@@ -310,17 +311,7 @@ namespace LogoFX.Client.Mvvm.Commanding
                 {
                     commandTargetElement = analysisResult.NextElement;
                 }                
-            }
-
-            if (InternalCommand != null)
-                return;
-
-            //TODO: Check the case for GetProperty(CommandName, BindingFlags.FlattenHierarchy) if something fails to work
-            analysisResult = elementAnalyzer.Analyze(AssociatedObject);
-            if (analysisResult.CanUseCommand)
-            {
-                InternalCommand = analysisResult.Command;                
-            }            
+            }                   
         }
         
         #endregion
