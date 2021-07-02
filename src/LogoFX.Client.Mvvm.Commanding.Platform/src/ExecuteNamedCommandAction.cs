@@ -294,98 +294,36 @@ namespace LogoFX.Client.Mvvm.Commanding
                 return;
             }
 
-            DependencyObject currentElement = AssociatedObject;
+            DependencyObject commandTargetElement = AssociatedObject;
             PropertyInfo commandProperty = null;
-            object currentTarget;
+            object commandTargetDataContext;
             InternalCommand = null;
+            var elementAnalyzer = new ElementAnalyzer(CommandName);
 
-            while (currentElement != null && InternalCommand == null)
+            while (commandTargetElement != null && InternalCommand == null)
             {
-                currentTarget = currentElement.GetValue(FrameworkElement.DataContextProperty);
-
-                if (currentTarget != null)
+                var analysisResult = elementAnalyzer.Analyze(commandTargetElement);
+                if (analysisResult.CanUseCommand)
                 {
-                    commandProperty = GetCommandProperty(currentTarget);
-                }
-
-                //is have readable property derived from icommand
-                if (commandProperty == null ||
-                    !commandProperty.CanRead ||
-                    !typeof(ICommand).IsAssignableFrom(commandProperty.PropertyType))
-                {
-                    DependencyObject temp;
-#if NET || NETCORE || NETFRAMEWORK
-                    if (currentElement is ContextMenu)
-                    {
-                        ContextMenu cm = currentElement as ContextMenu;
-                        temp = cm.PlacementTarget;
-                    }
-                    else
-#endif
-                    {
-                        temp = VisualTreeHelper.GetParent(currentElement);
-                    }
-
-                    if (temp == null)
-                    {
-                        FrameworkElement element = currentElement as FrameworkElement;
-                        if (element?.Parent == null)
-                        {
-                            currentElement = CommonProperties.GetOwner(currentElement) as FrameworkElement;
-                        }
-                        else
-                        {
-                            currentElement = element.Parent;
-                        }
-                    }
-                    else
-                    {
-                        currentElement = temp;
-                    }
+                    InternalCommand = analysisResult.Command;
                 }
                 else
                 {
-                    InternalCommand = (ICommand) commandProperty.GetValue(currentTarget, null);
-                }
+                    commandTargetElement = analysisResult.NextElement;
+                }                
             }
 
             if (InternalCommand != null)
                 return;
 
-            //check associated object itself
-            currentTarget = AssociatedObject;
-
-            if (currentTarget != null)
+            //TODO: Check the case for GetProperty(CommandName, BindingFlags.FlattenHierarchy) if something fails to work
+            var analysisResult = elementAnalyzer.Analyze(AssociatedObject);
+            if (analysisResult.CanUseCommand)
             {
-#if WINDOWS_APP || WINDOWS_PHONE_APP
-                commandProperty = currentTarget.GetType().GetRuntimeProperty(CommandName);
-#else
-                commandProperty = currentTarget.GetType().GetProperty(CommandName, BindingFlags.FlattenHierarchy);
-#endif
-            }
-
-            //is have readable property derived from icommand
-            if (commandProperty == null ||
-                !commandProperty.CanRead ||
-                !typeof(ICommand).IsAssignableFrom(commandProperty.PropertyType))
-            {
-                return;
-            }
-
-            InternalCommand = (ICommand) commandProperty.GetValue(currentTarget, null);
+                InternalCommand = analysisResult.Command;                
+            }            
         }
-
-        private PropertyInfo GetCommandProperty(object currentTarget)
-        {
-            PropertyInfo commandProperty;
-#if WINDOWS_APP || WINDOWS_PHONE_APP
-            commandProperty = currentTarget.GetType().GetRuntimeProperty(CommandName);
-#else
-            commandProperty = currentTarget.GetType().GetProperty(CommandName);
-#endif
-            return commandProperty;
-        }
-
+        
         #endregion
 
         #region Overrides
