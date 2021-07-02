@@ -46,7 +46,6 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// </returns>
         public virtual object Execute(object sender, object parameter)
         {
-
             if (AssociatedObject == null && sender is FrameworkElement)
             {
                 AssociatedObject = (FrameworkElement) sender;
@@ -60,15 +59,13 @@ namespace LogoFX.Client.Mvvm.Commanding
         ///  Called after the action is attached to an AssociatedObject.
         /// </summary>
         protected virtual void OnAttached()
-        {
-        }
+        {}
 
         /// <summary>
         /// Called when the action is being detached from its AssociatedObject, but before it has actually occurred.
         /// </summary>
         protected virtual void OnDetaching()
-        {
-        }
+        {}
 
         private static void OnAssociatedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

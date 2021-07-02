@@ -27,6 +27,7 @@
       <Link>ElementAnalysisResult.cs</Link>
     </Compile>
     <Compile Include="..\src\Extensions.cs" Link="Extensions.cs" />
+    <Compile Include="..\src\InitializeCanExecuteManagerMiddleware.cs" Link="InitializeCanExecuteManagerMiddleware.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Expression.Blend.Sdk" Version="1.0.2" />

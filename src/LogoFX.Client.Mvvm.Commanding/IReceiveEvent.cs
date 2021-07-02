@@ -14,5 +14,4 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// <returns></returns>
         bool ReceiveWeakEvent(EventArgs e);
     }
-
 }

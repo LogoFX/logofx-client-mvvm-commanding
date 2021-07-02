@@ -68,6 +68,7 @@
     <Compile Include="..\src\Extensions.cs">
       <Link>Extensions.cs</Link>
     </Compile>
+    <Compile Include="..\src\InitializeCanExecuteManagerMiddleware.cs" Link="InitializeCanExecuteManagerMiddleware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

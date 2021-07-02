@@ -9,7 +9,6 @@ namespace LogoFX.Client.Mvvm.Commanding
     public class ActionCommand<T>
          : CommandBase<T>
     {
-
         #region Declarations
 
         private readonly Func<T, bool> _canExecuteHandler;
