@@ -121,7 +121,6 @@ namespace LogoFX.Client.Mvvm.Commanding
             set { SetValue(TriggerParameterConverterProperty, value); }
         }
 
-
         /// <summary>
         /// The use trigger parameter property
         /// </summary>
@@ -131,7 +130,6 @@ namespace LogoFX.Client.Mvvm.Commanding
                 typeof(bool),
                 typeof(ExecuteCommandAction),
                 new PropertyMetadata(false));
-
 
         /// <summary>
         /// Gets or sets a value indicating whether to use trigger parameter.
