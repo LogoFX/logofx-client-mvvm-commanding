@@ -3,6 +3,8 @@ Implementation of Command pattern for MVVM.
 
 <img src=https://ci.appveyor.com/api/projects/status/github/logofx/logofx-client-mvvm-commanding>
 
+[![CodeFactor](https://www.codefactor.io/repository/github/logofx/logofx-client-mvvm-commanding/badge)](https://www.codefactor.io/repository/github/logofx/logofx-client-mvvm-commanding)
+
 ## Core
 
 <img src=https://img.shields.io/nuget/dt/LogoFX.Client.Mvvm.Commanding.Core>
