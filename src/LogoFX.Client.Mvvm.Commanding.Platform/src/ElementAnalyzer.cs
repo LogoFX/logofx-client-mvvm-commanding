@@ -1,3 +1,8 @@
+using System;
+using System.Windows.Input;
+using System.Reflection;
+using LogoFX.Client.Core;
+
 #if NET || NETCORE || NETFRAMEWORK
 using System.Windows;
 using System.Windows.Controls;
@@ -28,7 +33,7 @@ namespace LogoFX.Client.Mvvm.Commanding
 
         internal ElementAnalysisResult Analyze(DependencyObject commandTargetElement)
         {
-            PropertyInfo commandProperty;
+            PropertyInfo commandProperty = null;
             var commandTargetDataContext = commandTargetElement.GetValue(FrameworkElement.DataContextProperty);
             if (commandTargetDataContext != null)
             {
@@ -66,34 +71,36 @@ namespace LogoFX.Client.Mvvm.Commanding
 
         private DependencyObject GetNextCommandTargetElement(DependencyObject currentCommandTargetElement)
         {
+            DependencyObject nextTargetElement = currentCommandTargetElement;
             DependencyObject temp;
 #if NET || NETCORE || NETFRAMEWORK
-            if (commandTargetElement is ContextMenu)
+            if (currentCommandTargetElement is ContextMenu)
             {
-                ContextMenu cm = commandTargetElement as ContextMenu;
+                ContextMenu cm = currentCommandTargetElement as ContextMenu;
                 temp = cm.PlacementTarget;
             }
             else
 #endif
             {
-                temp = VisualTreeHelper.GetParent(commandTargetElement);
+                temp = VisualTreeHelper.GetParent(currentCommandTargetElement);
             }
             if (temp == null)
             {
-                FrameworkElement element = commandTargetElement as FrameworkElement;
+                FrameworkElement element = currentCommandTargetElement as FrameworkElement;
                 if (element?.Parent == null)
                 {
-                    commandTargetElement = CommonProperties.GetOwner(commandTargetElement) as FrameworkElement;
+                    nextTargetElement = CommonProperties.GetOwner(currentCommandTargetElement) as FrameworkElement;
                 }
                 else
                 {
-                    commandTargetElement = element.Parent;
+                    nextTargetElement = element.Parent;
                 }
             }
             else
             {
-                commandTargetElement = temp;
+                nextTargetElement = temp;
             }
+            return nextTargetElement;
         }             
     }
 }

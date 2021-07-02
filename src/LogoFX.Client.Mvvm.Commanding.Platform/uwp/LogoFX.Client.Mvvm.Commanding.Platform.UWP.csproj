@@ -119,6 +119,12 @@
     <Compile Include="..\src\ExecuteNamedCommandAction.cs">
       <Link>ExecuteNamedCommandAction.cs</Link>
     </Compile>
+    <Compile Include="..\src\ElementAnalyzer.cs">
+      <Link>ElementAnalyzer.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ElementAnalysisResult.cs">
+      <Link>ElementAnalysisResult.cs</Link>
+    </Compile>
     <Compile Include="..\src\Extensions.cs">
       <Link>Extensions.cs</Link>
     </Compile>

@@ -294,15 +294,14 @@ namespace LogoFX.Client.Mvvm.Commanding
                 return;
             }
 
-            DependencyObject commandTargetElement = AssociatedObject;
-            PropertyInfo commandProperty = null;
-            object commandTargetDataContext;
+            DependencyObject commandTargetElement = AssociatedObject;                     
             InternalCommand = null;
             var elementAnalyzer = new ElementAnalyzer(CommandName);
+            ElementAnalysisResult analysisResult;
 
             while (commandTargetElement != null && InternalCommand == null)
             {
-                var analysisResult = elementAnalyzer.Analyze(commandTargetElement);
+                analysisResult = elementAnalyzer.Analyze(commandTargetElement);
                 if (analysisResult.CanUseCommand)
                 {
                     InternalCommand = analysisResult.Command;
@@ -317,7 +316,7 @@ namespace LogoFX.Client.Mvvm.Commanding
                 return;
 
             //TODO: Check the case for GetProperty(CommandName, BindingFlags.FlattenHierarchy) if something fails to work
-            var analysisResult = elementAnalyzer.Analyze(AssociatedObject);
+            analysisResult = elementAnalyzer.Analyze(AssociatedObject);
             if (analysisResult.CanUseCommand)
             {
                 InternalCommand = analysisResult.Command;                

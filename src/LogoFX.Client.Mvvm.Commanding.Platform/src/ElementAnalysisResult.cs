@@ -1,3 +1,7 @@
+using System;
+using System.Windows.Input;
+using System.Reflection;
+
 #if NET || NETCORE || NETFRAMEWORK
 using System.Windows;
 using System.Windows.Controls;
