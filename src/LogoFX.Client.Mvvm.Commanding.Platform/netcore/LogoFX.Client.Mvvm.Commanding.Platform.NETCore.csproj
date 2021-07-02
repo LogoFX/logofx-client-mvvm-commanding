@@ -20,7 +20,14 @@
     <Compile Include="..\src\CanExecuteManager.cs" Link="CanExecuteManager.cs" />
     <Compile Include="..\src\ExecuteCommandAction.cs" Link="ExecuteCommandAction.cs" />
     <Compile Include="..\src\ExecuteNamedCommandAction.cs" Link="ExecuteNamedCommandAction.cs" />
+    <Compile Include="..\src\ElementAnalyzer.cs">
+      <Link>ElementAnalyzer.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ElementAnalysisResult.cs">
+      <Link>ElementAnalysisResult.cs</Link>
+    </Compile>
     <Compile Include="..\src\Extensions.cs" Link="Extensions.cs" />
+    <Compile Include="..\src\InitializeCanExecuteManagerMiddleware.cs" Link="InitializeCanExecuteManagerMiddleware.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Expression.Blend.Sdk" Version="1.0.2" />

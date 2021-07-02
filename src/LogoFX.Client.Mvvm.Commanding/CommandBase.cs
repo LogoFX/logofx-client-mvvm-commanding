@@ -9,15 +9,14 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandBase"/> class.
         /// </summary>
-        public CommandBase() : this(true) { }
+        public CommandBase() : this(true) {}
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandBase"/> class.
         /// </summary>
         /// <param name="isActive">if set to <c>true</c> [is active].</param>
         public CommandBase(bool isActive)
-            : base(isActive) { }
-
+            : base(isActive) {}
 
         #region Additional Methods
 
@@ -93,6 +92,5 @@
         }
 
         #endregion
-
     }
 }
