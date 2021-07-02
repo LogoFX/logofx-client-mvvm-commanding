@@ -260,7 +260,6 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// <remarks>Returns a value indicating whether or not the action is available.</remarks>
         private bool ApplyAvailabilityEffect()
         {
-
             if (AssociatedObject == null || InternalCommand == null) return false;
 
             // we get if it is enabled or not
@@ -306,11 +305,7 @@ namespace LogoFX.Client.Mvvm.Commanding
 
                 if (currentTarget != null)
                 {
-#if WINDOWS_APP || WINDOWS_PHONE_APP
-                    commandProperty = currentTarget.GetType().GetRuntimeProperty(CommandName);
-#else
-                    commandProperty = currentTarget.GetType().GetProperty(CommandName);
-#endif
+                    commandProperty = GetCommandProperty(currentTarget);
                 }
 
                 //is have readable property derived from icommand
@@ -348,7 +343,6 @@ namespace LogoFX.Client.Mvvm.Commanding
                         currentElement = temp;
                     }
                 }
-
                 else
                 {
                     InternalCommand = (ICommand) commandProperty.GetValue(currentTarget, null);
@@ -374,12 +368,22 @@ namespace LogoFX.Client.Mvvm.Commanding
             if (commandProperty == null ||
                 !commandProperty.CanRead ||
                 !typeof(ICommand).IsAssignableFrom(commandProperty.PropertyType))
-
             {
                 return;
             }
 
             InternalCommand = (ICommand) commandProperty.GetValue(currentTarget, null);
+        }
+
+        private PropertyInfo GetCommandProperty(object currentTarget)
+        {
+            PropertyInfo commandProperty;
+#if WINDOWS_APP || WINDOWS_PHONE_APP
+            commandProperty = currentTarget.GetType().GetRuntimeProperty(CommandName);
+#else
+            commandProperty = currentTarget.GetType().GetProperty(CommandName);
+#endif
+            return commandProperty;
         }
 
         #endregion
@@ -416,8 +420,6 @@ namespace LogoFX.Client.Mvvm.Commanding
         /// <param name="arg">The argument.</param>
         protected override void Invoke(object arg)
         {
-
-
             if (InternalCommand == null)
             {
                 SetPropertyBinding();
