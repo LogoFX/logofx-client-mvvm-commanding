@@ -24,7 +24,7 @@ namespace LogoFX.Client.Mvvm.Commanding
 {
     class ElementAnalyzer
     {
-        public string CommandName { get; private set;}
+        public string CommandName { get; private set; }
 
         public ElementAnalyzer(string commandName)
         {
@@ -48,7 +48,7 @@ namespace LogoFX.Client.Mvvm.Commanding
             else
             {
                 var command = (ICommand)commandProperty.GetValue(commandTargetDataContext, null);  
-                return new ElementAnalysisResult(command)              ;
+                return new ElementAnalysisResult(command);
             }            
         }
 
