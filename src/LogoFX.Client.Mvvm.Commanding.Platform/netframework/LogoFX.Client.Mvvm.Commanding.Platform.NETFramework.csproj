@@ -75,20 +75,14 @@
     <PackageReference Include="Expression.Blend.Sdk">
       <Version>1.0.2</Version>
     </PackageReference>
-    <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="LogoFX.Client.Mvvm.Core">
-      <Version>2.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="LogoFX.Core">
-      <Version>2.2.1</Version>
-    </PackageReference>
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.2" />    
+    <PackageReference Include="LogoFX.Client.Mvvm.Core" Version="2.2.2" />   
+    <PackageReference Include="LogoFX.Core" Version="2.2.2" />    
     <PackageReference Include="Solid.Bootstrapping">
-      <Version>2.3.1</Version>
+      <Version>2.3.2</Version>
     </PackageReference>
     <PackageReference Include="Solid.Extensibility">
-      <Version>2.3.1</Version>
+      <Version>2.3.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
